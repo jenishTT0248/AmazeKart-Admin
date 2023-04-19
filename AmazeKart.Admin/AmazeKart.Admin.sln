@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazeKart.Admin.API", "AmazeKart.Admin.API\AmazeKart.Admin.API.csproj", "{722EA405-FF7D-453B-93F9-BCC3569190F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazeKart.Admin.API", "AmazeKart.Admin.API\AmazeKart.Admin.API.csproj", "{722EA405-FF7D-453B-93F9-BCC3569190F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazeKart.Admin.WinService", "AmazeKart.Admin.WinService\AmazeKart.Admin.WinService.csproj", "{C4EAD133-F723-4575-9092-76912EB32CC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazeKart.Admin.WinService", "AmazeKart.Admin.WinService\AmazeKart.Admin.WinService.csproj", "{C4EAD133-F723-4575-9092-76912EB32CC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazeKart.Admin.Core", "AmazeKart.Admin.Core\AmazeKart.Admin.Core.csproj", "{2842C0E7-F127-4A87-A9CE-DD94282DEF89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C4EAD133-F723-4575-9092-76912EB32CC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4EAD133-F723-4575-9092-76912EB32CC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4EAD133-F723-4575-9092-76912EB32CC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2842C0E7-F127-4A87-A9CE-DD94282DEF89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2842C0E7-F127-4A87-A9CE-DD94282DEF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2842C0E7-F127-4A87-A9CE-DD94282DEF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2842C0E7-F127-4A87-A9CE-DD94282DEF89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
