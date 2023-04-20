@@ -4,20 +4,25 @@ using System.Runtime.Serialization;
 namespace AmazeKart.Admin.Core.ObjectModel
 {
     [DataContract]
-    public partial class Category
+    public partial class ProductCatalog
     {
-        public Category()
+        public ProductCatalog()
         {
         }
 
         [DataMember]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CategoryId { get; set; }
+        public int CatalogId { get; set; }
+
         [DataMember]
-        public string CategoryName { get; set; }
+        public int ProductId { get; set; }
+
         [DataMember]
-        public string Description { get; set; }
+        public virtual Product Product { get; set; }
+
         [DataMember]
-        public bool Active { get; set; }
+        public string ProductImage { get; set; }
+        [DataMember]
+        public string MediaType { get; set; }
     }
 }
