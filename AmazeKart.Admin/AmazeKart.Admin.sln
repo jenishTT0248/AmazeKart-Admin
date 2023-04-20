@@ -10,6 +10,7 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazeKart.Admin.Core", "AmazeKart.Admin.Core\AmazeKart.Admin.Core.csproj", "{2842C0E7-F127-4A87-A9CE-DD94282DEF89}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazeKart.Admin.Infrastructure", "AmazeKart.Admin.Infrastructure\AmazeKart.Admin.Infrastructure.csproj", "{FD01EA78-72DC-47F9-B267-65C541F79EE7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazeKart.Admin.Core", "AmazeKart.Admin.Core\AmazeKart.Admin.Core.csproj", "{2842C0E7-F127-4A87-A9CE-DD94282DEF89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
