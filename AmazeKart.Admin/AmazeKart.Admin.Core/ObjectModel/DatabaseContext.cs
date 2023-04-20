@@ -25,5 +25,10 @@ namespace AmazeKart.Admin.Core.ObjectModel
         //{
         //    builder.UseSqlServer();
         //}
+
+        public virtual DbSet<PaymentType> PaymentTypes { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Supplier> Suppliers { get; set; }
+        #endregion
     }
 }
