@@ -24,11 +24,6 @@ namespace AmazeKart.Admin.Core.ObjectModel
         //protected override void OnConfiguring(DbContextOptionsBuilder builder)
         //{
         //    builder.UseSqlServer();
-        //}
-
-        public virtual DbSet<PaymentType> PaymentTypes { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Supplier> Suppliers { get; set; }
-        #endregion
+        //}                
     }
 }
