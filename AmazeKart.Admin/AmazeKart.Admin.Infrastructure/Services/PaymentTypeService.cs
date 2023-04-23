@@ -33,20 +33,26 @@ namespace AmazeKart.Admin.Infrastructure.Services
         {
             if (paymentType == null) return ResultMessage.RecordNotFound;
 
-            PaymentType dbPaymentType = _paymentTypeRepository.FindOne(x => x.PaymentId == paymentType.PaymentId);
+
+            PaymentType dbPaymentType = _paymentTypeRepository.FindOne(x => x.Id == paymentType.Id);
             if (dbPaymentType == null) return ResultMessage.RecordNotFound;
 
+            if (dbPaymentType.Type.ToLower() == paymentType.Type.ToLower()) {
+                return ResultMessage.RecordExists;
+            }
+
+            _paymentTypeRepository.SetValues(dbPaymentType, paymentType);
+           
             _paymentTypeRepository.Update(dbPaymentType);
             _unitOfWork.Commit();
             return ResultMessage.Success;
         }
 
-        public ResultMessage Delete(PaymentType paymentType)
-        {
-            if (paymentType == null)
-                return ResultMessage.RecordNotFound;
 
-            PaymentType dbPaymentType = _paymentTypeRepository.FindOne(x => x.PaymentId == paymentType.PaymentId);
+        public ResultMessage Delete(int paymentId)
+        {
+            PaymentType dbPaymentType = _paymentTypeRepository.FindOne(x => x.Id == paymentId);
+                
             if (dbPaymentType == null) return ResultMessage.RecordNotFound;
 
             _paymentTypeRepository.Delete(dbPaymentType);
@@ -56,7 +62,7 @@ namespace AmazeKart.Admin.Infrastructure.Services
 
         public PaymentType GetById(int paymentId)
         {
-            return _paymentTypeRepository.FindOne(x => x.PaymentId == paymentId);
+            return _paymentTypeRepository.FindOne(x => x.Id == paymentId);
         }
 
         public IQueryable<PaymentType> GetAll()
