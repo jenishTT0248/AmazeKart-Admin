@@ -75,5 +75,12 @@ namespace AmazeKart.Admin.Core.IRepositories
         /// <param name="t">Specified a new object to create.</param>
         /// <returns></returns>
         void CreateMany(IEnumerable<T> t);
+
+        /// <summary>
+        /// Set New value
+        /// </summary>
+        /// <param name="DestinationValue"></param>
+        /// <param name="SourceValue"></param>
+        void SetValues(object DestinationValue, object SourceValue);
     }
 }

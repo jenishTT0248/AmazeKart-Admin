@@ -12,7 +12,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddSignalR();
 builder.Services.AddControllers().ConfigureApiBehaviorOptions(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
@@ -22,14 +21,14 @@ builder.Services.AddControllers().ConfigureApiBehaviorOptions(options =>
     options.SerializerSettings.ContractResolver = new DefaultContractResolver();
 });
 
+builder.Services.AddSignalR();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHttpClient();
 
 var coreAssembly = Assembly.Load("AmazeKart.Admin.Core");
 var infrastructureAssembly = Assembly.Load("AmazeKart.Admin.Infrastructure");
-var sqlToScan = Assembly.GetAssembly(typeof(IUnitOfWork));
 
-builder.Services.AddDbContext<AmazeKartDB>(options => options.UseLazyLoadingProxies().UseSqlServer(builder.Configuration?.GetConnectionString("AmazeKartDB")?.ToString(), options => options.EnableRetryOnFailure()));
+var sqlToScan = Assembly.GetAssembly(typeof(IUnitOfWork));
 
 Assembly[] assemblies = { coreAssembly, infrastructureAssembly };
 builder.Services.RegisterAssemblyPublicNonGenericClasses(assemblies)
@@ -38,6 +37,9 @@ builder.Services.RegisterAssemblyPublicNonGenericClasses(assemblies)
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+
+string connectionString = builder.Configuration?.GetConnectionString("AmazeKartDB")?.ToString();
+builder.Services.AddDbContext<AmazeKartDB>(options => options.UseLazyLoadingProxies().UseSqlServer(connectionString, options => options.EnableRetryOnFailure()));
 
 builder.Services.AddAutoMapper(c => c.AddProfile<AutomapperConfiguration>(), typeof(Program));
 
@@ -53,7 +55,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-app.UseAuthorization();
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {

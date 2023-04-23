@@ -1,0 +1,67 @@
+﻿using AmazeKart.Admin.Core.Enums;
+using AmazeKart.Admin.Core.IRepositories;
+using AmazeKart.Admin.Core.IServices;
+using AmazeKart.Admin.Core.ObjectModel;
+
+namespace AmazeKart.Admin.Infrastructure.Services
+{
+    public class CategoryService : ICategoryService
+    {
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly ICategoryRepository _categoryRepository;
+
+        public CategoryService(IUnitOfWork unitOfWork, ICategoryRepository categoryRepository)
+        {
+            _unitOfWork = unitOfWork;
+            _categoryRepository = categoryRepository;
+        }
+
+        public ResultMessage Create(Category category)
+        {
+            if (category == null) return ResultMessage.RecordNotFound;
+
+            bool isCategoryExists = _categoryRepository.Any(y => y.CategoryName == category.CategoryName);
+
+            if (isCategoryExists) return ResultMessage.RecordExists;
+
+            _categoryRepository.Create(category);
+            _unitOfWork.Commit();
+            return ResultMessage.Success;
+        }
+
+        public ResultMessage Update(Category category)
+        {
+            if (category == null) return ResultMessage.RecordNotFound;
+
+            Category dbCategory = _categoryRepository.FindOne(x => x.CategoryId == category.CategoryId);
+            if (dbCategory == null) return ResultMessage.RecordNotFound;
+
+            _categoryRepository.Update(dbCategory);
+            _unitOfWork.Commit();
+            return ResultMessage.Success;
+        }
+
+        public ResultMessage Delete(Category category)
+        {
+            if (category == null)
+                return ResultMessage.RecordNotFound;
+
+            Category dbCategory = _categoryRepository.FindOne(x => x.CategoryId == category.CategoryId);
+            if (dbCategory == null) return ResultMessage.RecordNotFound;
+
+            _categoryRepository.Delete(dbCategory);
+            _unitOfWork.Commit();
+            return ResultMessage.Success;
+        }
+
+        public Category GetById(int categoryId)
+        {
+            return _categoryRepository.FindOne(x => x.CategoryId == categoryId);
+        }
+
+        public IQueryable<Category> GetAll()
+        {
+            return _categoryRepository.All();
+        }
+    }
+}
