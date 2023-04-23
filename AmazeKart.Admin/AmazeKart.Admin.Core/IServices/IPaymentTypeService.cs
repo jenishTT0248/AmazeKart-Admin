@@ -7,7 +7,9 @@ namespace AmazeKart.Admin.Core.IServices
     {
         ResultMessage Create(PaymentType paymentType);
         ResultMessage Update(PaymentType paymentType);
+
         ResultMessage Delete(int paymentId);
+
         PaymentType GetById(int paymentId);
         IQueryable<PaymentType> GetAll();
     }

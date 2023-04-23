@@ -6,7 +6,9 @@ namespace AmazeKart.Admin.Core.IBal
     {
         ResultMessage Create(ViewModel.PaymentType entity);
         ResultMessage Update(ViewModel.PaymentType entity);
+
         ResultMessage Delete(int paymentId);
+        
         IQueryable<ViewModel.PaymentType> GetAll();
         ViewModel.PaymentType GetById(int paymentId);
     }

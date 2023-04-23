@@ -11,8 +11,10 @@ namespace AmazeKart.Admin.API.App_Start
             CreateMap<ViewModel.PaymentType, ObjectModel.PaymentType>();
             CreateMap<ObjectModel.PaymentType, ViewModel.PaymentType>();
 
+
             CreateMap<ViewModel.Category, ObjectModel.Category>();
             CreateMap<ObjectModel.Category, ViewModel.Category>();
+
         }
     }
 }

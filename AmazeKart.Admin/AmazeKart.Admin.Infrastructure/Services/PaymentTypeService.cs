@@ -33,6 +33,7 @@ namespace AmazeKart.Admin.Infrastructure.Services
         {
             if (paymentType == null) return ResultMessage.RecordNotFound;
 
+
             PaymentType dbPaymentType = _paymentTypeRepository.FindOne(x => x.Id == paymentType.Id);
             if (dbPaymentType == null) return ResultMessage.RecordNotFound;
 
@@ -41,14 +42,17 @@ namespace AmazeKart.Admin.Infrastructure.Services
             }
 
             _paymentTypeRepository.SetValues(dbPaymentType, paymentType);
+           
             _paymentTypeRepository.Update(dbPaymentType);
             _unitOfWork.Commit();
             return ResultMessage.Success;
         }
 
+
         public ResultMessage Delete(int paymentId)
         {
             PaymentType dbPaymentType = _paymentTypeRepository.FindOne(x => x.Id == paymentId);
+                
             if (dbPaymentType == null) return ResultMessage.RecordNotFound;
 
             _paymentTypeRepository.Delete(dbPaymentType);

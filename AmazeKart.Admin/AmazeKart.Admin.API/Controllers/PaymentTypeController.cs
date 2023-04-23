@@ -8,11 +8,21 @@ namespace AmazeKart.Admin.API.Controllers
 {
     [Route("api/PaymentType")]
     public class PaymentTypeController : BaseAPIController
+
     {        
         private readonly IPaymentTypeBAL _paymentTypeBAL;
         public PaymentTypeController(IPaymentTypeBAL paymentTypeBAL)
         {
             _paymentTypeBAL = paymentTypeBAL;            
+
+    {
+        private readonly ILogger<PaymentTypeController> _logger;
+        private readonly IPaymentTypeBAL _paymentTypeBAL;
+        public PaymentTypeController(IPaymentTypeBAL paymentTypeBAL, ILogger<PaymentTypeController> logger)
+        {
+            _paymentTypeBAL = paymentTypeBAL;
+            _logger = logger;
+
         }
 
         [HttpPost, Route("SaveData")]
@@ -21,7 +31,7 @@ namespace AmazeKart.Admin.API.Controllers
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage;
 
-            if (entity.Id == 0)
+            if (entity.Id == 0)       
             {
                 resultMessage = MessageConstants.RecordInsertSuccessfully;
                 rMsg = _paymentTypeBAL.Create(entity);
@@ -38,12 +48,13 @@ namespace AmazeKart.Admin.API.Controllers
         }
 
         [HttpPost, Route("DeleteData")]
+
         public IActionResult DeleteData(int paymentId)
         {            
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage = MessageConstants.RecordDeleteSuccessfully;
             rMsg = _paymentTypeBAL.Delete(paymentId);
-            
+                   
             if (rMsg != ResultMessage.Success)
                 return Ok(new ResponseResult(HttpStatusCode.BadRequest, rMsg.GetStringValue(), null, MessageType.Warning.GetStringValue()));
             
