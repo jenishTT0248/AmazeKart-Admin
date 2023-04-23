@@ -129,5 +129,10 @@ namespace AmazeKart.Admin.Infrastructure.Repositories
         {
             return DbSet.Any(predicate);
         }
+
+        public virtual void SetValues(object DestinationValue, object SourceValue)
+        {
+            Context.Entry(DestinationValue).CurrentValues.SetValues(SourceValue);
+        }
     }
 }

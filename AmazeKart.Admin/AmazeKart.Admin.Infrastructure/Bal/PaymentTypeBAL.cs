@@ -36,13 +36,9 @@ namespace AmazeKart.Admin.Infrastructure.Bal
             return _paymentTypeService.Update(paymentType);
         }
 
-        public ResultMessage Delete(ViewModel.PaymentType entity)
+        public ResultMessage Delete(int paymentId)
         {
-            if (entity == null) return ResultMessage.RecordNotFound;
-
-            ObjectModel.PaymentType paymentType = new ObjectModel.PaymentType();
-            _mapper.Map<ViewModel.PaymentType, ObjectModel.PaymentType>(entity, paymentType);
-            return _paymentTypeService.Delete(paymentType);
+            return _paymentTypeService.Delete(paymentId);
         }
 
         public IQueryable<ViewModel.PaymentType> GetAll()

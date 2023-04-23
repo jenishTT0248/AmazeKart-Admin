@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AmazeKart.Admin.Core.ObjectModel
 {
@@ -14,10 +9,10 @@ namespace AmazeKart.Admin.Core.ObjectModel
         public PaymentType()
         {
         }
-
+        
         [DataMember]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int PaymentId { get; set; }
+        public int Id { get; set; }
 
         [DataMember]
         public string Type { get; set; }
