@@ -33,21 +33,19 @@ namespace AmazeKart.Admin.Infrastructure.Services
         {
             if (paymentType == null) return ResultMessage.RecordNotFound;
 
-
-            PaymentType dbPaymentType = _paymentTypeRepository.FindOne(x => x.Id == paymentType.Id);
-            if (dbPaymentType == null) return ResultMessage.RecordNotFound;
-
-            if (dbPaymentType.Type.ToLower() == paymentType.Type.ToLower()) {
+            if (_paymentTypeRepository.Any(x => x.Id != paymentType.Id && x.Type == paymentType.Type)) {
                 return ResultMessage.RecordExists;
             }
 
-            _paymentTypeRepository.SetValues(dbPaymentType, paymentType);
-           
-            _paymentTypeRepository.Update(dbPaymentType);
+            PaymentType type = _paymentTypeRepository.FindOne(x => x.Id == paymentType.Id);
+
+            if (type == null) return ResultMessage.RecordNotFound;
+
+            _paymentTypeRepository.SetValues(type, paymentType);
+            _paymentTypeRepository.Update(type);
             _unitOfWork.Commit();
             return ResultMessage.Success;
         }
-
 
         public ResultMessage Delete(int paymentId)
         {

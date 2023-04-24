@@ -33,20 +33,24 @@ namespace AmazeKart.Admin.Infrastructure.Services
         {
             if (category == null) return ResultMessage.RecordNotFound;
 
-            Category dbCategory = _categoryRepository.FindOne(x => x.CategoryId == category.CategoryId);
+            if (_categoryRepository.Any(x => x.Id != category.Id && x.CategoryName == category.CategoryName))
+            {
+                return ResultMessage.RecordExists;
+            }
+
+            Category dbCategory = _categoryRepository.FindOne(x => x.Id == category.Id);
             if (dbCategory == null) return ResultMessage.RecordNotFound;
 
+            _categoryRepository.SetValues(dbCategory, category);
             _categoryRepository.Update(dbCategory);
             _unitOfWork.Commit();
             return ResultMessage.Success;
         }
 
-        public ResultMessage Delete(Category category)
-        {
-            if (category == null)
-                return ResultMessage.RecordNotFound;
 
-            Category dbCategory = _categoryRepository.FindOne(x => x.CategoryId == category.CategoryId);
+        public ResultMessage Delete(int categoryId)
+        {
+            Category dbCategory = _categoryRepository.FindOne(x => x.Id == categoryId);        
             if (dbCategory == null) return ResultMessage.RecordNotFound;
 
             _categoryRepository.Delete(dbCategory);
@@ -56,7 +60,7 @@ namespace AmazeKart.Admin.Infrastructure.Services
 
         public Category GetById(int categoryId)
         {
-            return _categoryRepository.FindOne(x => x.CategoryId == categoryId);
+            return _categoryRepository.FindOne(x => x.Id == categoryId);
         }
 
         public IQueryable<Category> GetAll()

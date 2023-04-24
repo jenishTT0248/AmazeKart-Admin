@@ -36,13 +36,9 @@ namespace AmazeKart.Admin.Infrastructure.Bal
             return _categoryService.Update(category);
         }
 
-        public ResultMessage Delete(ViewModel.Category entity)
+        public ResultMessage Delete(int categoryId)
         {
-            if (entity == null) return ResultMessage.RecordNotFound;
-
-            ObjectModel.Category category = new ObjectModel.Category();
-            _mapper.Map<ViewModel.Category, ObjectModel.Category>(entity, category);
-            return _categoryService.Delete(category);
+            return _categoryService.Delete(categoryId);
         }
 
         public IQueryable<ViewModel.Category> GetAll()

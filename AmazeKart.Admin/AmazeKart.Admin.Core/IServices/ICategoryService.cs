@@ -7,7 +7,7 @@ namespace AmazeKart.Admin.Core.IServices
     {
         ResultMessage Create(Category category);
         ResultMessage Update(Category category);
-        ResultMessage Delete(Category category);
+        ResultMessage Delete(int categoryId);
         Category GetById(int categoryId);
         IQueryable<Category> GetAll();
     }

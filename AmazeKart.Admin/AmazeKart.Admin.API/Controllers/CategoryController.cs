@@ -23,7 +23,8 @@ namespace AmazeKart.Admin.API.Controllers
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage;
 
-            if (entity.CategoryId == 0)
+
+            if (entity.Id == 0)
             {
                 resultMessage = MessageConstants.RecordInsertSuccessfully;
                 rMsg = _categoryBAL.Create(entity);
@@ -40,11 +41,11 @@ namespace AmazeKart.Admin.API.Controllers
         }
 
         [HttpPost, Route("DeleteData")]
-        public IActionResult DeleteData(Category entity)
+        public IActionResult DeleteData(int categoryId)
         {
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage = MessageConstants.RecordDeleteSuccessfully;
-            rMsg = _categoryBAL.Delete(entity);
+            rMsg = _categoryBAL.Delete(categoryId);
 
             if (rMsg != ResultMessage.Success)
                 return Ok(new ResponseResult(HttpStatusCode.BadRequest, rMsg.GetStringValue(), null, MessageType.Warning.GetStringValue()));
