@@ -33,20 +33,23 @@ namespace AmazeKart.Admin.Infrastructure.Services
         {
             if (category == null) return ResultMessage.RecordNotFound;
 
+            if (_categoryRepository.Any(x => x.Id != category.Id && x.CategoryName == category.CategoryName))
+            {
+                return ResultMessage.RecordExists;
+            }
+
             Category dbCategory = _categoryRepository.FindOne(x => x.Id == category.Id);
             if (dbCategory == null) return ResultMessage.RecordNotFound;
 
+            _categoryRepository.SetValues(dbCategory, category);
             _categoryRepository.Update(dbCategory);
             _unitOfWork.Commit();
             return ResultMessage.Success;
         }
 
-        public ResultMessage Delete(Category category)
+        public ResultMessage Delete(int categoryId)
         {
-            if (category == null)
-                return ResultMessage.RecordNotFound;
-
-            Category dbCategory = _categoryRepository.FindOne(x => x.Id == category.Id);
+            Category dbCategory = _categoryRepository.FindOne(x => x.Id == categoryId);
             if (dbCategory == null) return ResultMessage.RecordNotFound;
 
             _categoryRepository.Delete(dbCategory);
