@@ -8,9 +8,10 @@ namespace AmazeKart.Admin.API.Controllers
 {
     [Route("api/PaymentType")]
     public class PaymentTypeController : BaseAPIController
-    {        
-        private readonly IPaymentTypeBAL _paymentTypeBAL;
+    {            
+        private readonly IPaymentTypeBAL _paymentTypeBAL;    
         private readonly ILogger<PaymentTypeController> _logger;
+        
         public PaymentTypeController(IPaymentTypeBAL paymentTypeBAL, ILogger<PaymentTypeController> logger)
         {
             _paymentTypeBAL = paymentTypeBAL;
@@ -40,7 +41,6 @@ namespace AmazeKart.Admin.API.Controllers
         }
 
         [HttpPost, Route("DeleteData")]
-
         public IActionResult DeleteData(int paymentId)
         {            
             ResultMessage rMsg = ResultMessage.RecordNotFound;

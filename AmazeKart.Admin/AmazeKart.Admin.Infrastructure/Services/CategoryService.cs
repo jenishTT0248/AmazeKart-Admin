@@ -47,9 +47,10 @@ namespace AmazeKart.Admin.Infrastructure.Services
             return ResultMessage.Success;
         }
 
+
         public ResultMessage Delete(int categoryId)
         {
-            Category dbCategory = _categoryRepository.FindOne(x => x.Id == categoryId);
+            Category dbCategory = _categoryRepository.FindOne(x => x.Id == categoryId);        
             if (dbCategory == null) return ResultMessage.RecordNotFound;
 
             _categoryRepository.Delete(dbCategory);

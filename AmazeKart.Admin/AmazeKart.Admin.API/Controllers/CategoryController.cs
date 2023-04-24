@@ -23,6 +23,7 @@ namespace AmazeKart.Admin.API.Controllers
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage;
 
+
             if (entity.Id == 0)
             {
                 resultMessage = MessageConstants.RecordInsertSuccessfully;

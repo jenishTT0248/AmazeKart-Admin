@@ -3,13 +3,14 @@
     using Microsoft.EntityFrameworkCore;
 
     public partial class AmazeKartDB : DbContext
-    {
+    {        
         public AmazeKartDB(DbContextOptions<AmazeKartDB> dbContextOptions)
               : base(dbContextOptions)
         {
         }
 
         #region AmazeKart
+        
         public virtual DbSet<Category> Categories { get; set; }
         //public virtual DbSet<Customer> Customers { get; set; }
         //public virtual DbSet<Order> Orders { get; set; }

@@ -36,7 +36,6 @@ namespace AmazeKart.Admin.Infrastructure.Bal
             return _paymentTypeService.Update(paymentType);
         }
 
-
         public ResultMessage Delete(int paymentId)
         {
             return _paymentTypeService.Delete(paymentId);
