@@ -31,7 +31,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Type\": \"Credit Card Payment\"\r\n}",
+							"raw": "{\r\n    \"Type\": \"Debit Card Payment\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -76,7 +76,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Id\": 1,\r\n    \"Type\": \"Debit Card Payment\"\r\n}",
+							"raw": "{\r\n    \"Id\": 2,\r\n    \"Type\": \"Debit Card Payment\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -233,6 +233,230 @@
 							"query": [
 								{
 									"key": "paymentId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "SaveData",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CategoryName\": \"Footwear & Shoes\",\r\n    \"Description\": \"Footwear & Shoes\",\r\n    \"Active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Category/SaveData",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Category",
+								"SaveData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Data",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": 2,\r\n    \"CategoryName\": \"Clothing & Apparel\",\r\n    \"Description\": \"Clothing & Apparel\",\r\n    \"Active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Category/SaveData",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Category",
+								"SaveData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Data",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Category/DeleteData?categoryId=4",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Category",
+								"DeleteData"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7285/api/Category/GetAll",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Category",
+								"GetAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7285/api/Category/GetById?categoryId=2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Category",
+								"GetById"
+							],
+							"query": [
+								{
+									"key": "categoryId",
 									"value": "2"
 								}
 							]
