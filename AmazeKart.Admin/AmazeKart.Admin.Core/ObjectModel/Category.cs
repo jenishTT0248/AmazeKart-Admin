@@ -8,12 +8,11 @@ namespace AmazeKart.Admin.Core.ObjectModel
     {
         public Category()
         {
-
         }
 
         [DataMember]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CategoryId { get; set; }
+        public int Id { get; set; }
         [DataMember]
         public string CategoryName { get; set; }
         [DataMember]

@@ -8,21 +8,13 @@ namespace AmazeKart.Admin.API.Controllers
 {
     [Route("api/PaymentType")]
     public class PaymentTypeController : BaseAPIController
-
     {        
         private readonly IPaymentTypeBAL _paymentTypeBAL;
-        public PaymentTypeController(IPaymentTypeBAL paymentTypeBAL)
-        {
-            _paymentTypeBAL = paymentTypeBAL;            
-
-    {
         private readonly ILogger<PaymentTypeController> _logger;
-        private readonly IPaymentTypeBAL _paymentTypeBAL;
         public PaymentTypeController(IPaymentTypeBAL paymentTypeBAL, ILogger<PaymentTypeController> logger)
         {
             _paymentTypeBAL = paymentTypeBAL;
             _logger = logger;
-
         }
 
         [HttpPost, Route("SaveData")]

@@ -12,7 +12,7 @@ namespace AmazeKart.Admin.Core.ObjectModel
 
         [DataMember]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CatalogId { get; set; }
+        public int Id { get; set; }
 
         [DataMember]
         public int ProductId { get; set; }

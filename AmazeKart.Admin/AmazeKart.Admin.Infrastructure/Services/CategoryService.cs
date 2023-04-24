@@ -33,7 +33,7 @@ namespace AmazeKart.Admin.Infrastructure.Services
         {
             if (category == null) return ResultMessage.RecordNotFound;
 
-            Category dbCategory = _categoryRepository.FindOne(x => x.CategoryId == category.CategoryId);
+            Category dbCategory = _categoryRepository.FindOne(x => x.Id == category.Id);
             if (dbCategory == null) return ResultMessage.RecordNotFound;
 
             _categoryRepository.Update(dbCategory);
@@ -46,7 +46,7 @@ namespace AmazeKart.Admin.Infrastructure.Services
             if (category == null)
                 return ResultMessage.RecordNotFound;
 
-            Category dbCategory = _categoryRepository.FindOne(x => x.CategoryId == category.CategoryId);
+            Category dbCategory = _categoryRepository.FindOne(x => x.Id == category.Id);
             if (dbCategory == null) return ResultMessage.RecordNotFound;
 
             _categoryRepository.Delete(dbCategory);
@@ -56,7 +56,7 @@ namespace AmazeKart.Admin.Infrastructure.Services
 
         public Category GetById(int categoryId)
         {
-            return _categoryRepository.FindOne(x => x.CategoryId == categoryId);
+            return _categoryRepository.FindOne(x => x.Id == categoryId);
         }
 
         public IQueryable<Category> GetAll()
