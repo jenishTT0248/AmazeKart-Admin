@@ -46,5 +46,8 @@ namespace AmazeKart.Admin.Core.ObjectModel
 
         [DataMember]
         public string Email { get; set; }
+
+        [DataMember]
+        public bool Active { get; set; }
     }
 }

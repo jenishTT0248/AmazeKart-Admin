@@ -6,30 +6,30 @@ using System.Net;
 
 namespace AmazeKart.Admin.API.Controllers
 {
-    [Route("api/Category")]    
-    public class CategoryController : BaseAPIController
+    public class CustomerController : BaseAPIController
     {        
-        private readonly ICategoryBAL _categoryBAL;
-        public CategoryController(ICategoryBAL categoryBAL)
-        {
-            _categoryBAL = categoryBAL;            
-        }
+        private readonly ICustomerBAL _customerBAL;
 
+        public CustomerController(ICustomerBAL customerBAL)
+        {            
+            _customerBAL = customerBAL;
+        }
+        
         [HttpPost, Route("SaveData")]
-        public IActionResult SaveData(Category entity)
+        public IActionResult SaveCustomer(Customer customer)
         {
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage;
 
-            if (entity.Id == 0)
+            if (customer.Id == 0)
             {
                 resultMessage = MessageConstants.RecordInsertSuccessfully;
-                rMsg = _categoryBAL.Create(entity);
+                rMsg = _customerBAL.Create(customer);
             }
             else
             {
                 resultMessage = MessageConstants.RecordupdateSuccessfully;
-                rMsg = _categoryBAL.Update(entity);
+                rMsg = _customerBAL.Update(customer);
             }
 
             if (rMsg != ResultMessage.Success)
@@ -38,11 +38,11 @@ namespace AmazeKart.Admin.API.Controllers
         }
 
         [HttpPost, Route("DeleteData")]
-        public IActionResult DeleteData(int categoryId)
+        public IActionResult Delete(int customerId)
         {
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage = MessageConstants.RecordDeleteSuccessfully;
-            rMsg = _categoryBAL.Delete(categoryId);
+            rMsg = _customerBAL.Delete(customerId);
 
             if (rMsg != ResultMessage.Success)
                 return Ok(new ResponseResult(HttpStatusCode.BadRequest, rMsg.GetStringValue(), null, MessageType.Warning.GetStringValue()));
@@ -53,15 +53,15 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpGet, Route("GetAll")]
         public IActionResult GetAll()
         {
-            List<Category> categories = _categoryBAL.GetAll().ToList();
+            List<Customer> categories = _customerBAL.GetAll().ToList();
             return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, categories, MessageType.Success.GetStringValue()));
         }
 
         [HttpGet, Route("GetById")]
-        public IActionResult GetById(int categoryId)
+        public IActionResult GetById(int customerId)
         {
-            Category category = _categoryBAL.GetById(categoryId);
-            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, category, MessageType.Success.GetStringValue()));
+            Customer customer = _customerBAL.GetById(customerId);
+            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, customer, MessageType.Success.GetStringValue()));
         }
     }
 }

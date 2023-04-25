@@ -42,7 +42,7 @@ namespace AmazeKart.Admin.Infrastructure.Bal
         }
 
         public IQueryable<ViewModel.PaymentType> GetAll()
-        {
+        {            
             var paymentTypes = _paymentTypeService.GetAll().ToList();
             List<ViewModel.PaymentType> paymentTypesList = new();
             paymentTypesList = _mapper.Map<List<ObjectModel.PaymentType>, List<ViewModel.PaymentType>>(paymentTypes);
