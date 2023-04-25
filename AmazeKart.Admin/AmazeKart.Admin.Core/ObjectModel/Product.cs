@@ -43,6 +43,9 @@ namespace AmazeKart.Admin.Core.ObjectModel
         public decimal DiscountValue { get; set; }
 
         [DataMember]
+        public bool Active { get; set; }
+
+        [DataMember]
         public virtual Supplier Supplier { get; set; }
 
         [DataMember]

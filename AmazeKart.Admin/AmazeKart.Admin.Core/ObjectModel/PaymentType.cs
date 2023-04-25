@@ -16,5 +16,7 @@ namespace AmazeKart.Admin.Core.ObjectModel
 
         [DataMember]
         public string Type { get; set; }
+        [DataMember]
+        public bool Active { get; set; }
     }
 }
