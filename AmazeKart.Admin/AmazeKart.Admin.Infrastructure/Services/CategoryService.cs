@@ -39,6 +39,7 @@ namespace AmazeKart.Admin.Infrastructure.Services
             }
 
             Category dbCategory = _categoryRepository.FindOne(x => x.Id == category.Id && x.Active);
+
             if (dbCategory == null) return ResultMessage.RecordNotFound;
 
             _categoryRepository.SetValues(dbCategory, category);
@@ -49,7 +50,8 @@ namespace AmazeKart.Admin.Infrastructure.Services
 
         public ResultMessage Delete(int categoryId)
         {
-            Category dbCategory = _categoryRepository.FindOne(x => x.Id == categoryId && x.Active);        
+            Category dbCategory = _categoryRepository.FindOne(x => x.Id == categoryId && x.Active);
+
             if (dbCategory == null) return ResultMessage.RecordNotFound;
 
             _categoryRepository.Delete(dbCategory);

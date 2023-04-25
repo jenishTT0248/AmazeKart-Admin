@@ -39,7 +39,7 @@ namespace AmazeKart.Admin.Infrastructure.Services
             }
 
             PaymentType type = _paymentTypeRepository.FindOne(x => x.Id == paymentType.Id && x.Active);
-
+           
             if (type == null) return ResultMessage.RecordNotFound;
 
             _paymentTypeRepository.SetValues(type, paymentType);
