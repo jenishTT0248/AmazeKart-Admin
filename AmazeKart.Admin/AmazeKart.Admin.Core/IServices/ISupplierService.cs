@@ -4,7 +4,7 @@ using AmazeKart.Admin.Core.ObjectModel;
 
 namespace AmazeKart.Admin.Core.IServices
 {
-    public class ISupplierService
+    public interface ISupplierService
     {
         ResultMessage Create(Supplier category);
         ResultMessage Update(Supplier category);
