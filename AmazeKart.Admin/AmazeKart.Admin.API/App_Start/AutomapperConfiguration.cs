@@ -25,6 +25,9 @@ namespace AmazeKart.Admin.API.App_Start
             
             CreateMap<ViewModel.Supplier, ObjectModel.Supplier>();
             CreateMap<ObjectModel.Supplier, ViewModel.Supplier>();
+
+            CreateMap<ViewModel.Product, ObjectModel.Product>();
+            CreateMap<ObjectModel.Product, ViewModel.Product>();
         }
     }
 }
