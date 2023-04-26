@@ -12,9 +12,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-
-
-
 builder.Services.AddControllers().ConfigureApiBehaviorOptions(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
@@ -23,7 +20,6 @@ builder.Services.AddControllers().ConfigureApiBehaviorOptions(options =>
 {
     options.SerializerSettings.ContractResolver = new DefaultContractResolver();
 });
-
 
 builder.Services.AddSignalR();
 builder.Services.AddEndpointsApiExplorer();
@@ -49,7 +45,6 @@ builder.Services.AddAutoMapper(c => c.AddProfile<AutomapperConfiguration>(), typ
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();

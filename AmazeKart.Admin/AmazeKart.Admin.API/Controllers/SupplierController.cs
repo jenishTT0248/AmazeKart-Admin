@@ -1,4 +1,4 @@
-using AmazeKart.Admin.Core.Enums;
+﻿using AmazeKart.Admin.Core.Enums;
 using AmazeKart.Admin.Core.IBal;
 using AmazeKart.Admin.Core.ViewModel;
 using Microsoft.AspNetCore.Mvc;
@@ -6,31 +6,31 @@ using System.Net;
 
 namespace AmazeKart.Admin.API.Controllers
 {
-    [Route("api/PaymentType")]
-    public class PaymentTypeController : BaseAPIController
-    {            
-        private readonly IPaymentTypeBAL _paymentTypeBAL;    
+    [Route("api/Supplier")]
+    public class SupplierController : BaseAPIController
+    {        
+        private readonly ISupplierBAL _supplierBAL;
 
-        public PaymentTypeController(IPaymentTypeBAL paymentTypeBAL)
+        public SupplierController(ISupplierBAL supplierBAL)
         {
-            _paymentTypeBAL = paymentTypeBAL;            
+            _supplierBAL = supplierBAL;            
         }
 
         [HttpPost, Route("SaveData")]
-        public IActionResult SaveData(PaymentType entity)
+        public IActionResult SaveData(Supplier entity)
         {
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage;
 
-            if (entity.Id == 0)       
+            if (entity.SupplierId == 0)
             {
                 resultMessage = MessageConstants.RecordInsertSuccessfully;
-                rMsg = _paymentTypeBAL.Create(entity);
+                rMsg = _supplierBAL.Create(entity);
             }
             else
             {
                 resultMessage = MessageConstants.RecordupdateSuccessfully;
-                rMsg = _paymentTypeBAL.Update(entity);
+                rMsg = _supplierBAL.Update(entity);
             }
 
             if (rMsg != ResultMessage.Success)
@@ -39,30 +39,30 @@ namespace AmazeKart.Admin.API.Controllers
         }
 
         [HttpPost, Route("DeleteData")]
-        public IActionResult DeleteData(int paymentId)
-        {            
+        public IActionResult DeleteData(int supplierId)
+        {
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage = MessageConstants.RecordDeleteSuccessfully;
-            rMsg = _paymentTypeBAL.Delete(paymentId);
-                   
+            rMsg = _supplierBAL.Delete(supplierId);
+
             if (rMsg != ResultMessage.Success)
                 return Ok(new ResponseResult(HttpStatusCode.BadRequest, rMsg.GetStringValue(), null, MessageType.Warning.GetStringValue()));
-            
+
             return Ok(new ResponseResult(HttpStatusCode.OK, resultMessage.GetStringValue(), null, MessageType.Success.GetStringValue()));
         }
 
         [HttpGet, Route("GetAll")]
         public IActionResult GetAll()
         {
-            List<PaymentType> paymentTypes = _paymentTypeBAL.GetAll().ToList();
-            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, paymentTypes, MessageType.Success.GetStringValue()));
+            List<Supplier> suppliers = _supplierBAL.GetAll().ToList();
+            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, suppliers, MessageType.Success.GetStringValue()));
         }
 
         [HttpGet, Route("GetById")]
-        public IActionResult GetById(int paymentId)
+        public IActionResult GetById(int supplierId)
         {
-            PaymentType paymentType = _paymentTypeBAL.GetById(paymentId);
-            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, paymentType, MessageType.Success.GetStringValue()));
+            Supplier supplier = _supplierBAL.GetById(supplierId);
+            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, supplier, MessageType.Success.GetStringValue()));
         }
     }
 }
