@@ -1,7 +1,6 @@
 ﻿using AmazeKart.Admin.Core.Enums;
 using AmazeKart.Admin.Core.IBal;
 using AmazeKart.Admin.Core.ViewModel;
-using AmazeKart.Admin.Infrastructure.Bal;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -9,14 +8,12 @@ namespace AmazeKart.Admin.API.Controllers
 {
     [Route("api/Supplier")]
     public class SupplierController : BaseAPIController
-    {
-        private readonly ILogger<SupplierController> _logger;
+    {        
         private readonly ISupplierBAL _supplierBAL;
 
-        public SupplierController(ISupplierBAL supplierBAL, ILogger<SupplierController> logger)
+        public SupplierController(ISupplierBAL supplierBAL)
         {
-            _supplierBAL = supplierBAL;
-            _logger = logger;
+            _supplierBAL = supplierBAL;            
         }
 
         [HttpPost, Route("SaveData")]
@@ -24,7 +21,6 @@ namespace AmazeKart.Admin.API.Controllers
         {
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage;
-
 
             if (entity.SupplierId == 0)
             {
@@ -58,16 +54,15 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpGet, Route("GetAll")]
         public IActionResult GetAll()
         {
-            List<Supplier> categories = _supplierBAL.GetAll().ToList();
-            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, categories, MessageType.Success.GetStringValue()));
+            List<Supplier> suppliers = _supplierBAL.GetAll().ToList();
+            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, suppliers, MessageType.Success.GetStringValue()));
         }
 
         [HttpGet, Route("GetById")]
-        public IActionResult GetById(int categoryId)
+        public IActionResult GetById(int supplierId)
         {
-            Supplier category = _supplierBAL.GetById(categoryId);
-            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, category, MessageType.Success.GetStringValue()));
+            Supplier supplier = _supplierBAL.GetById(supplierId);
+            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, supplier, MessageType.Success.GetStringValue()));
         }
-
     }
 }

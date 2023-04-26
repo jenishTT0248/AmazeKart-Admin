@@ -22,9 +22,9 @@ namespace AmazeKart.Admin.API.App_Start
 
             CreateMap<ViewModel.OrderDetail, ObjectModel.OrderDetail>();
             CreateMap<ObjectModel.OrderDetail, ViewModel.OrderDetail>();
+            
             CreateMap<ViewModel.Supplier, ObjectModel.Supplier>();
             CreateMap<ObjectModel.Supplier, ViewModel.Supplier>();
-
         }
     }
 }

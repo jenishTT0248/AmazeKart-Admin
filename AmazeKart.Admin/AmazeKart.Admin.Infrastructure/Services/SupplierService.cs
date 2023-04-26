@@ -8,64 +8,63 @@ namespace AmazeKart.Admin.Infrastructure.Services
     public class SupplierService : ISupplierService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly ISupplierRepository _SupplierRepository;
+        private readonly ISupplierRepository _supplierRepository;
 
-        public SupplierService(IUnitOfWork unitOfWork, ISupplierRepository SupplierRepository)
+        public SupplierService(IUnitOfWork unitOfWork, ISupplierRepository supplierRepository)
         {
             _unitOfWork = unitOfWork;
-            _SupplierRepository = SupplierRepository;
+            _supplierRepository = supplierRepository;
         }
 
-        public ResultMessage Create(Supplier Supplier)
+        public ResultMessage Create(Supplier supplier)
         {
-            if (Supplier == null) return ResultMessage.RecordNotFound;
+            if (supplier == null) return ResultMessage.RecordNotFound;
 
-            bool isSupplierExists = _SupplierRepository.Any(y => y.Email == Supplier.Email);
+            bool isSupplierExists = _supplierRepository.Any(y => y.Email == supplier.Email && y.Active);
 
             if (isSupplierExists) return ResultMessage.RecordExists;
 
-            _SupplierRepository.Create(Supplier);
+            _supplierRepository.Create(supplier);
             _unitOfWork.Commit();
             return ResultMessage.Success;
         }
 
-        public ResultMessage Update(Supplier Supplier)
+        public ResultMessage Update(Supplier supplier)
         {
-            if (Supplier == null) return ResultMessage.RecordNotFound;
+            if (supplier == null) return ResultMessage.RecordNotFound;
 
-            if (_SupplierRepository.Any(x => x.Id != Supplier.Id && x.Email == Supplier.Email))
+            if (_supplierRepository.Any(x => x.Id != supplier.Id && x.Email == supplier.Email && x.Active))
             {
                 return ResultMessage.RecordExists;
             }
 
-            Supplier dbSupplier = _SupplierRepository.FindOne(x => x.Id == Supplier.Id);
+            Supplier dbSupplier = _supplierRepository.FindOne(x => x.Id == supplier.Id && x.Active);
             if (dbSupplier == null) return ResultMessage.RecordNotFound;
 
-            _SupplierRepository.SetValues(dbSupplier, Supplier);
-            _SupplierRepository.Update(dbSupplier);
+            _supplierRepository.SetValues(dbSupplier, supplier);
+            _supplierRepository.Update(dbSupplier);
             _unitOfWork.Commit();
             return ResultMessage.Success;
         }
 
-
-        public ResultMessage Delete(int SupplierId)
+        public ResultMessage Delete(int supplierId)
         {
-            Supplier dbSupplier = _SupplierRepository.FindOne(x => x.Id == SupplierId);
+            Supplier dbSupplier = _supplierRepository.FindOne(x => x.Id == supplierId && x.Active);
             if (dbSupplier == null) return ResultMessage.RecordNotFound;
 
-            _SupplierRepository.Delete(dbSupplier);
+            _supplierRepository.Delete(dbSupplier);
             _unitOfWork.Commit();
             return ResultMessage.Success;
         }
 
-        public Supplier GetById(int SupplierId)
+        public Supplier GetById(int supplierId)
         {
-            return _SupplierRepository.FindOne(x => x.Id == SupplierId);
+            return _supplierRepository.FindOne(x => x.Id == supplierId && x.Active);
         }
 
         public IQueryable<Supplier> GetAll()
         {
-            return _SupplierRepository.All();
+            return _supplierRepository.Find(x => x.Active);
         }
     }
 }

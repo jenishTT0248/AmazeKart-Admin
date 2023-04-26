@@ -6,8 +6,8 @@ namespace AmazeKart.Admin.Core.IServices
 {
     public interface ISupplierService
     {
-        ResultMessage Create(Supplier category);
-        ResultMessage Update(Supplier category);
+        ResultMessage Create(Supplier supplier);
+        ResultMessage Update(Supplier supplier);
         ResultMessage Delete(int supplierId);
         Supplier GetById(int supplierId);
         IQueryable<Supplier> GetAll();

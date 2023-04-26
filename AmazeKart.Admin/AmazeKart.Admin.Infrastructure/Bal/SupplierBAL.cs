@@ -9,51 +9,51 @@ namespace AmazeKart.Admin.Infrastructure.Bal
 {
     public class SupplierBAL : ISupplierBAL
     {
-        private readonly ISupplierService _SupplierService;
+        private readonly ISupplierService _supplierService;
         private readonly IMapper _mapper;
 
         public SupplierBAL(IMapper mapper, ISupplierService SupplierService)
         {
             _mapper = mapper;
-            _SupplierService = SupplierService;
+            _supplierService = SupplierService;
         }
-
+        
         public ResultMessage Create(ViewModel.Supplier entity)
         {
             if (entity == null) return ResultMessage.RecordNotFound;
 
-            ObjectModel.Supplier Supplier = new ObjectModel.Supplier();
-            _mapper.Map<ViewModel.Supplier, ObjectModel.Supplier>(entity, Supplier);
-            return _SupplierService.Create(Supplier);
+            ObjectModel.Supplier supplier = new ObjectModel.Supplier();
+            _mapper.Map<ViewModel.Supplier, ObjectModel.Supplier>(entity, supplier);
+            return _supplierService.Create(supplier);
         }
 
         public ResultMessage Update(ViewModel.Supplier entity)
         {
             if (entity == null) return ResultMessage.RecordNotFound;
 
-            ObjectModel.Supplier Supplier = new ObjectModel.Supplier();
-            _mapper.Map<ViewModel.Supplier, ObjectModel.Supplier>(entity, Supplier);
-            return _SupplierService.Update(Supplier);
+            ObjectModel.Supplier supplier = new ObjectModel.Supplier();
+            _mapper.Map<ViewModel.Supplier, ObjectModel.Supplier>(entity, supplier);
+            return _supplierService.Update(supplier);
         }
 
-        public ResultMessage Delete(int SupplierId)
+        public ResultMessage Delete(int supplierId)
         {
-            return _SupplierService.Delete(SupplierId);
+            return _supplierService.Delete(supplierId);
         }
 
         public IQueryable<ViewModel.Supplier> GetAll()
         {
-            var categories = _SupplierService.GetAll().ToList();
-            List<ViewModel.Supplier> SupplierList = new();
-            SupplierList = _mapper.Map<List<ObjectModel.Supplier>, List<ViewModel.Supplier>>(categories);
-            return SupplierList.AsQueryable();
+            var suppliers = _supplierService.GetAll().ToList();
+            List<ViewModel.Supplier> supplierList = new();
+            supplierList = _mapper.Map<List<ObjectModel.Supplier>, List<ViewModel.Supplier>>(suppliers);
+            return supplierList.AsQueryable();
         }
 
-        public ViewModel.Supplier GetById(int SupplierId)
+        public ViewModel.Supplier GetById(int supplierId)
         {
-            ObjectModel.Supplier Supplier = _SupplierService.GetById(SupplierId);
-            ViewModel.Supplier SupplierViewModel = _mapper.Map<ObjectModel.Supplier, ViewModel.Supplier>(Supplier);
-            return SupplierViewModel;
+            ObjectModel.Supplier supplier = _supplierService.GetById(supplierId);
+            ViewModel.Supplier supplierViewModel = _mapper.Map<ObjectModel.Supplier, ViewModel.Supplier>(supplier);
+            return supplierViewModel;
         }
     }
 }
