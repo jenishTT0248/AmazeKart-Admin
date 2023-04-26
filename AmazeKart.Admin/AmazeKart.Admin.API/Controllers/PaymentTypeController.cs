@@ -10,6 +10,7 @@ namespace AmazeKart.Admin.API.Controllers
     public class PaymentTypeController : BaseAPIController
     {            
         private readonly IPaymentTypeBAL _paymentTypeBAL;    
+
         public PaymentTypeController(IPaymentTypeBAL paymentTypeBAL)
         {
             _paymentTypeBAL = paymentTypeBAL;            
