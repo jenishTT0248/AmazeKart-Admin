@@ -8,8 +8,8 @@ namespace AmazeKart.Admin.API.App_Start
     {
         public AutomapperConfiguration()
         {
-            CreateMap<ViewModel.PaymentType, ObjectModel.PaymentType>();
-            CreateMap<ObjectModel.PaymentType, ViewModel.PaymentType>();
+            CreateMap<ViewModel.PaymentDetail, ObjectModel.PaymentDetail>();
+            CreateMap<ObjectModel.PaymentDetail, ViewModel.PaymentDetail>();
 
             CreateMap<ViewModel.Category, ObjectModel.Category>();
             CreateMap<ObjectModel.Category, ViewModel.Category>();
