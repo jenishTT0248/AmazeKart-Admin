@@ -6,18 +6,18 @@ using System.Net;
 
 namespace AmazeKart.Admin.API.Controllers
 {
-    [Route("api/PaymentType")]
-    public class PaymentTypeController : BaseAPIController
+    [Route("api/PaymentDetail")]
+    public class PaymentDetailController : BaseAPIController
     {            
-        private readonly IPaymentTypeBAL _paymentTypeBAL;    
+        private readonly IPaymentDetailBAL _paymentDetailBAL;    
 
-        public PaymentTypeController(IPaymentTypeBAL paymentTypeBAL)
+        public PaymentDetailController(IPaymentDetailBAL paymentDetailBAL)
         {
-            _paymentTypeBAL = paymentTypeBAL;            
+            _paymentDetailBAL = paymentDetailBAL;            
         }
 
         [HttpPost, Route("SaveData")]
-        public IActionResult SaveData(PaymentType entity)
+        public IActionResult SaveData(PaymentDetail entity)
         {
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage;
@@ -25,12 +25,12 @@ namespace AmazeKart.Admin.API.Controllers
             if (entity.Id == 0)       
             {
                 resultMessage = MessageConstants.RecordInsertSuccessfully;
-                rMsg = _paymentTypeBAL.Create(entity);
+                rMsg = _paymentDetailBAL.Create(entity);
             }
             else
             {
                 resultMessage = MessageConstants.RecordupdateSuccessfully;
-                rMsg = _paymentTypeBAL.Update(entity);
+                rMsg = _paymentDetailBAL.Update(entity);
             }
 
             if (rMsg != ResultMessage.Success)
@@ -43,7 +43,7 @@ namespace AmazeKart.Admin.API.Controllers
         {            
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage = MessageConstants.RecordDeleteSuccessfully;
-            rMsg = _paymentTypeBAL.Delete(paymentId);
+            rMsg = _paymentDetailBAL.Delete(paymentId);
                    
             if (rMsg != ResultMessage.Success)
                 return Ok(new ResponseResult(HttpStatusCode.BadRequest, rMsg.GetStringValue(), null, MessageType.Warning.GetStringValue()));
@@ -54,15 +54,15 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpGet, Route("GetAll")]
         public IActionResult GetAll()
         {
-            List<PaymentType> paymentTypes = _paymentTypeBAL.GetAll().ToList();
-            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, paymentTypes, MessageType.Success.GetStringValue()));
+            List<PaymentDetail> paymentDetails = _paymentDetailBAL.GetAll().ToList();
+            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, paymentDetails, MessageType.Success.GetStringValue()));
         }
 
         [HttpGet, Route("GetById")]
         public IActionResult GetById(int paymentId)
         {
-            PaymentType paymentType = _paymentTypeBAL.GetById(paymentId);
-            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, paymentType, MessageType.Success.GetStringValue()));
+            PaymentDetail paymentDetail = _paymentDetailBAL.GetById(paymentId);
+            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, paymentDetail, MessageType.Success.GetStringValue()));
         }
     }
 }

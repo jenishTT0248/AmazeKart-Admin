@@ -38,6 +38,6 @@ namespace AmazeKart.Admin.Core.ObjectModel
         [DataMember]
         public virtual Customer Customer { get; set; }
         [DataMember]
-        public virtual PaymentType PaymentType { get; set; }
+        public virtual PaymentDetail PaymentDetail { get; set; }
     }
 }

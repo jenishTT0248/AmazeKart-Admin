@@ -15,6 +15,6 @@
         public int PaymentId { get; set; }
         public string TransactionReferenceNumber { get; set; }
         public Customer Customer { get; set; }
-        public PaymentType PaymentType { get; set; }
+        public PaymentDetail PaymentType { get; set; }
     }
 }

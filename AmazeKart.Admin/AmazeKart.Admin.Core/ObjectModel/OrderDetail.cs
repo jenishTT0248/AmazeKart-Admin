@@ -11,7 +11,6 @@ namespace AmazeKart.Admin.Core.ObjectModel
         }
 
         [DataMember]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderId { get; set; }
 
         [DataMember]

@@ -2,7 +2,7 @@
 
 namespace AmazeKart.Admin.Core.IRepositories
 {
-    public interface IPaymentTypeRepository : IRepository<PaymentType>
+    public interface IPaymentDetailRepository : IRepository<PaymentDetail>
     {
     }
 }

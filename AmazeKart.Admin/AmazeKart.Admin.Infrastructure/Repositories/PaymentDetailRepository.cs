@@ -3,9 +3,9 @@ using AmazeKart.Admin.Core.ObjectModel;
 
 namespace AmazeKart.Admin.Infrastructure.Repositories
 {
-    public class PaymentTypeRepository : Repository<PaymentType>, IPaymentTypeRepository
+    public class PaymentDetailRepository : Repository<PaymentDetail>, IPaymentDetailRepository
     {
-        public PaymentTypeRepository(IUnitOfWork context)
+        public PaymentDetailRepository(IUnitOfWork context)
             : base(context)
         {
         }
