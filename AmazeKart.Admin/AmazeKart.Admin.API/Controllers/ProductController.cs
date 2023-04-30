@@ -1,6 +1,8 @@
-﻿using AmazeKart.Admin.Core.Enums;
+﻿using AmazeKart.Admin.API.Helpers;
+using AmazeKart.Admin.Core.Enums;
 using AmazeKart.Admin.Core.IBal;
 using AmazeKart.Admin.Core.ViewModel;
+using AmazeKart.Admin.Core.ViewModel.Response;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -18,6 +20,11 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpPost, Route("SaveData")]
         public IActionResult SaveData(Product entity)
         {
+            if (!ModelState.IsValid)
+            {
+                return Ok(new ResponseResult(HttpStatusCode.BadRequest, ModelState.GetInvalidModelStateErrors(), null, MessageType.Warning.GetStringValue()));
+            }
+
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage;
 
@@ -40,6 +47,12 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpPost, Route("DeleteData")]
         public IActionResult DeleteData(int productId)
         {
+            if (productId == 0)
+            {
+                ResultMessage notFoundMessage = ResultMessage.NotFound;
+                return Ok(new ResponseResult(HttpStatusCode.BadRequest, notFoundMessage.GetStringValue(), null, MessageType.Warning.GetStringValue()));
+            }
+
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage = MessageConstants.RecordDeleteSuccessfully;
             rMsg = _productBAL.Delete(productId);
@@ -53,14 +66,20 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpGet, Route("GetAll")]
         public IActionResult GetAll()
         {
-            List<Product> products = _productBAL.GetAll().ToList();
+            List<ProductResponse> products = _productBAL.GetAll().ToList();
             return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, products, MessageType.Success.GetStringValue()));
         }
 
         [HttpGet, Route("GetById")]
         public IActionResult GetById(int productId)
         {
-            Product product = _productBAL.GetById(productId);
+            if (productId == 0)
+            {
+                ResultMessage notFoundMessage = ResultMessage.NotFound;
+                return Ok(new ResponseResult(HttpStatusCode.BadRequest, notFoundMessage.GetStringValue(), null, MessageType.Warning.GetStringValue()));
+            }
+
+            ProductResponse product = _productBAL.GetById(productId);
             return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, product, MessageType.Success.GetStringValue()));
         }
     }

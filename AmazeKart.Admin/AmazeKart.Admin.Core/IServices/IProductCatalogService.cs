@@ -7,7 +7,7 @@ namespace AmazeKart.Admin.Core.IServices
     {
         ResultMessage Create(ProductCatalog productCatalog);
         ResultMessage Update(ProductCatalog productCatalog);
-        ResultMessage Delete(ProductCatalog productCatalog);
+        ResultMessage Delete(int productCatalogId);
         ProductCatalog GetById(int productCatalogId);
         IQueryable<ProductCatalog> GetAll();
     }

@@ -1,13 +1,14 @@
 ﻿using AmazeKart.Admin.Core.Enums;
+using AmazeKart.Admin.Core.ViewModel;
 
 namespace AmazeKart.Admin.Core.IBal
 {
     public interface IProductCatalogBAL
     {
-        ResultMessage Create(ViewModel.ProductCatalog entity);
-        ResultMessage Update(ViewModel.ProductCatalog entity);
-        ResultMessage Delete(ViewModel.ProductCatalog entity);
-        IQueryable<ViewModel.ProductCatalog> GetAll();
-        ViewModel.ProductCatalog GetById(int categoryId);
+        ResultMessage Create(ProductCatalog entity);
+        ResultMessage Update(ProductCatalog entity);
+        ResultMessage Delete(int productCatalogId);
+        IQueryable<ProductCatalog> GetAll();
+        ProductCatalog GetById(int categoryId);
     }
 }

@@ -13,52 +13,58 @@ namespace AmazeKart.Admin.Infrastructure.Services
         {
             _unitOfWork = unitOfWork;
             _productCatalogRepository = productCatalogRepository;   
-
         }
+
         public ResultMessage Create(ProductCatalog productCatalog)
         {
             if (productCatalog == null) return ResultMessage.RecordNotFound;
-            bool isProductCatalogExists = _productCatalogRepository.Any(y => y.Product == productCatalog.Product);
+            
+            bool isProductCatalogExists = _productCatalogRepository.Any(y => y.Id == productCatalog.Id);
+            
             if (isProductCatalogExists) return ResultMessage.RecordExists;
 
             _productCatalogRepository.Create(productCatalog);
             _unitOfWork.Commit();
             return ResultMessage.Success;
         }
-
-        public ResultMessage Delete(ProductCatalog productCatalog)
+        
+        public ResultMessage Update(ProductCatalog productCatalog)
         {
-            if (productCatalog == null)
-                return ResultMessage.RecordNotFound;
+            if (productCatalog == null) return ResultMessage.RecordNotFound;
+
+            if (_productCatalogRepository.Any(x => x.Id != productCatalog.Id && x.ProductId == productCatalog.ProductId))
+            {
+                return ResultMessage.RecordExists;
+            }
 
             ProductCatalog dbProductCatalog = _productCatalogRepository.FindOne(x => x.ProductId == productCatalog.ProductId);
+            if (dbProductCatalog == null) return ResultMessage.RecordNotFound;
+
+            _productCatalogRepository.SetValues(dbProductCatalog, productCatalog);
+            _productCatalogRepository.Update(dbProductCatalog);
+            _unitOfWork.Commit();
+            return ResultMessage.Success;
+        }
+
+        public ResultMessage Delete(int productCatalogId)
+        {
+            ProductCatalog dbProductCatalog = _productCatalogRepository.FindOne(x => x.Id == productCatalogId);
+            
             if (dbProductCatalog == null) return ResultMessage.RecordNotFound;
 
             _productCatalogRepository.Delete(dbProductCatalog);
             _unitOfWork.Commit();
             return ResultMessage.Success;
         }
+        
+        public ProductCatalog GetById(int productCatalogId)
+        {
+            return _productCatalogRepository.FindOne(x => x.Id == productCatalogId);
+        }
 
         public IQueryable<ProductCatalog> GetAll()
         {
             return _productCatalogRepository.All();
-        }
-
-        public ProductCatalog GetById(int productCatalogId)
-        {
-            return _productCatalogRepository.FindOne(x => x.ProductId == productCatalogId);
-        }
-
-        public ResultMessage Update(ProductCatalog productCatalog)
-        {
-            if (productCatalog == null) return ResultMessage.RecordNotFound;
-
-            ProductCatalog dbProductCatalog = _productCatalogRepository.FindOne(x => x.ProductId == productCatalog.ProductId);
-            if (dbProductCatalog == null) return ResultMessage.RecordNotFound;
-
-            _productCatalogRepository.Update(dbProductCatalog);
-            _unitOfWork.Commit();
-            return ResultMessage.Success;
         }
     }
 }

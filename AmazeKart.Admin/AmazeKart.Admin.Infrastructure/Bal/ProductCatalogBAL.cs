@@ -1,7 +1,6 @@
 ﻿using AmazeKart.Admin.Core.Enums;
 using AmazeKart.Admin.Core.IBal;
 using AmazeKart.Admin.Core.IServices;
-using AmazeKart.Admin.Infrastructure.Services;
 using AutoMapper;
 using ObjectModel = AmazeKart.Admin.Core.ObjectModel;
 using ViewModel = AmazeKart.Admin.Core.ViewModel;
@@ -17,6 +16,7 @@ namespace AmazeKart.Admin.Infrastructure.Bal
             _mapper = mapper;
             _productCatalogService = productCatalogService;
         }
+        
         public ResultMessage Create(ViewModel.ProductCatalog entity)
         {
             if (entity == null) return ResultMessage.RecordNotFound;
@@ -26,15 +26,20 @@ namespace AmazeKart.Admin.Infrastructure.Bal
             return _productCatalogService.Create(productCatalog);
         }
 
-        public ResultMessage Delete(ViewModel.ProductCatalog entity)
+        public ResultMessage Update(ViewModel.ProductCatalog entity)
         {
             if (entity == null) return ResultMessage.RecordNotFound;
 
             ObjectModel.ProductCatalog productCatalog = new ObjectModel.ProductCatalog();
             _mapper.Map<ViewModel.ProductCatalog, ObjectModel.ProductCatalog>(entity, productCatalog);
-            return _productCatalogService.Delete(productCatalog);
+            return _productCatalogService.Update(productCatalog);
         }
 
+        public ResultMessage Delete(int productCatalogId)
+        {
+            return _productCatalogService.Delete(productCatalogId);
+        }
+        
         public IQueryable<ViewModel.ProductCatalog> GetAll()
         {
             var productCatalogs = _productCatalogService.GetAll().ToList();
@@ -48,15 +53,6 @@ namespace AmazeKart.Admin.Infrastructure.Bal
             ObjectModel.ProductCatalog productCatalog = _productCatalogService.GetById(productCatalogId);
             ViewModel.ProductCatalog productCatalogViewModel = _mapper.Map<ObjectModel.ProductCatalog, ViewModel.ProductCatalog>(productCatalog);
             return productCatalogViewModel;
-        }
-
-        public ResultMessage Update(ViewModel.ProductCatalog entity)
-        {
-            if (entity == null) return ResultMessage.RecordNotFound;
-
-            ObjectModel.ProductCatalog productCatalog = new ObjectModel.ProductCatalog();
-            _mapper.Map<ViewModel.ProductCatalog, ObjectModel.ProductCatalog>(entity, productCatalog);
-            return _productCatalogService.Update(productCatalog);
         }
     }
 }
