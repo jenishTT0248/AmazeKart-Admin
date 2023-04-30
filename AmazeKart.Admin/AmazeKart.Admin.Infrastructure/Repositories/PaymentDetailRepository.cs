@@ -3,11 +3,11 @@ using AmazeKart.Admin.Core.ObjectModel;
 
 namespace AmazeKart.Admin.Infrastructure.Repositories
 {
-    public class OrderRepository : Repository<Order>, IOrderRepository
+    public class PaymentDetailRepository : Repository<PaymentDetail>, IPaymentDetailRepository
     {
-        public OrderRepository(IUnitOfWork context)
+        public PaymentDetailRepository(IUnitOfWork context)
             : base(context)
         {
         }
-    }    
+    }
 }

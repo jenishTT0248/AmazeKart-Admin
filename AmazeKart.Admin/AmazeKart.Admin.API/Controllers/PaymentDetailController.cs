@@ -1,4 +1,4 @@
-﻿using AmazeKart.Admin.Core.Enums;
+using AmazeKart.Admin.Core.Enums;
 using AmazeKart.Admin.Core.IBal;
 using AmazeKart.Admin.Core.ViewModel;
 using Microsoft.AspNetCore.Mvc;
@@ -6,30 +6,31 @@ using System.Net;
 
 namespace AmazeKart.Admin.API.Controllers
 {
-    [Route("api/Category")]
-    public class CategoryController : BaseAPIController
-    {        
-        private readonly ICategoryBAL _categoryBAL;
-        public CategoryController(ICategoryBAL categoryBAL)
+    [Route("api/PaymentDetail")]
+    public class PaymentDetailController : BaseAPIController
+    {            
+        private readonly IPaymentDetailBAL _paymentDetailBAL;    
+
+        public PaymentDetailController(IPaymentDetailBAL paymentDetailBAL)
         {
-            _categoryBAL = categoryBAL;            
+            _paymentDetailBAL = paymentDetailBAL;            
         }
 
         [HttpPost, Route("SaveData")]
-        public IActionResult SaveData(Category entity)
+        public IActionResult SaveData(PaymentDetail entity)
         {
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage;
 
-            if (entity.Id == 0)
+            if (entity.Id == 0)       
             {
                 resultMessage = MessageConstants.RecordInsertSuccessfully;
-                rMsg = _categoryBAL.Create(entity);
+                rMsg = _paymentDetailBAL.Create(entity);
             }
             else
             {
                 resultMessage = MessageConstants.RecordupdateSuccessfully;
-                rMsg = _categoryBAL.Update(entity);
+                rMsg = _paymentDetailBAL.Update(entity);
             }
 
             if (rMsg != ResultMessage.Success)
@@ -38,30 +39,30 @@ namespace AmazeKart.Admin.API.Controllers
         }
 
         [HttpPost, Route("DeleteData")]
-        public IActionResult DeleteData(int categoryId)
-        {
+        public IActionResult DeleteData(int paymentId)
+        {            
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage = MessageConstants.RecordDeleteSuccessfully;
-            rMsg = _categoryBAL.Delete(categoryId);
-
+            rMsg = _paymentDetailBAL.Delete(paymentId);
+                   
             if (rMsg != ResultMessage.Success)
                 return Ok(new ResponseResult(HttpStatusCode.BadRequest, rMsg.GetStringValue(), null, MessageType.Warning.GetStringValue()));
-
+            
             return Ok(new ResponseResult(HttpStatusCode.OK, resultMessage.GetStringValue(), null, MessageType.Success.GetStringValue()));
         }
 
         [HttpGet, Route("GetAll")]
         public IActionResult GetAll()
         {
-            List<Category> categories = _categoryBAL.GetAll().ToList();
-            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, categories, MessageType.Success.GetStringValue()));
+            List<PaymentDetail> paymentDetails = _paymentDetailBAL.GetAll().ToList();
+            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, paymentDetails, MessageType.Success.GetStringValue()));
         }
 
         [HttpGet, Route("GetById")]
-        public IActionResult GetById(int categoryId)
+        public IActionResult GetById(int paymentId)
         {
-            Category category = _categoryBAL.GetById(categoryId);
-            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, category, MessageType.Success.GetStringValue()));
+            PaymentDetail paymentDetail = _paymentDetailBAL.GetById(paymentId);
+            return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, paymentDetail, MessageType.Success.GetStringValue()));
         }
     }
 }

@@ -12,7 +12,7 @@ namespace AmazeKart.Admin.Core.ObjectModel
 
         [DataMember]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ProductId { get; set; }
+        public int Id { get; set; }
 
         [DataMember]
         public string SKU { get; set; }
@@ -41,6 +41,9 @@ namespace AmazeKart.Admin.Core.ObjectModel
 
         [DataMember]
         public decimal DiscountValue { get; set; }
+
+        [DataMember]
+        public bool Active { get; set; }
 
         [DataMember]
         public virtual Supplier Supplier { get; set; }
