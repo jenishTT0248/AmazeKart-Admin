@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "daa92d76-adb3-49e5-80f1-700c30ba85f6",
+		"_postman_id": "1f77a304-8b03-42ed-b765-62de27b19bb9",
 		"name": "Admin API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "10415168"
@@ -243,6 +243,242 @@
 			]
 		},
 		{
+			"name": "Supplier",
+			"item": [
+				{
+					"name": "SaveData",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CompanyName\": \"Westside\",\r\n    \"ContactFirstName\": \"Jenish\",\r\n    \"ContactLastName\": \"Pachchigar\",\r\n    \"Address1\": \"Ranchodji park society\",\r\n    \"Address2\": \"Katargam\",\r\n    \"City\": \"Surat\",\r\n    \"State\": \"Gujarat\",\r\n    \"PostalCode\": \"395004\",\r\n    \"Country\": \"India\",\r\n    \"Phone\": \"0261-2568974\",\r\n    \"Email\": \"jenishpachchigar@gmail.com\",\r\n    \"Active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Supplier/SaveData",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Supplier",
+								"SaveData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Data",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": 2,\r\n    \"CompanyName\": \"Westside\",\r\n    \"ContactFirstName\": \"Jenish\",\r\n    \"ContactLastName\": \"Pachchigar\",\r\n    \"Address1\": \"Ranchodji park society\",\r\n    \"Address2\": \"Katargam\",\r\n    \"City\": \"Surat\",\r\n    \"State\": \"Gujarat\",\r\n    \"PostalCode\": \"395004\",\r\n    \"Country\": \"India\",\r\n    \"Phone\": \"0261-2568974\",\r\n    \"Email\": \"jenishpachchigar@gmail.com\",\r\n    \"Active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Supplier/SaveData",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Supplier",
+								"SaveData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Data",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Supplier/DeleteData?supplierId=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Supplier",
+								"DeleteData"
+							],
+							"query": [
+								{
+									"key": "supplierId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7285/api/Supplier/GetAll",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Supplier",
+								"GetAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Type\": \"Credit Card Payment\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Supplier/GetById?supplierId=2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Supplier",
+								"GetById"
+							],
+							"query": [
+								{
+									"key": "supplierId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Category",
 			"item": [
 				{
@@ -267,7 +503,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"CategoryName\": \"Footwear & Shoes\",\r\n    \"Description\": \"Footwear & Shoes\",\r\n    \"Active\": true\r\n}",
+							"raw": "{\r\n    \"CategoryName\": \"Sports Products\",\r\n    \"Description\": \"Sports Products\",\r\n    \"Active\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -312,7 +548,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Id\": 2,\r\n    \"CategoryName\": \"Clothing & Apparel\",\r\n    \"Description\": \"Clothing & Apparel\",\r\n    \"Active\": true\r\n}",
+							"raw": "{\r\n    \"Id\": 1,\r\n    \"CategoryName\": \"Clothing & Apparel\",\r\n    \"Description\": \"Clothing & Apparel\",\r\n    \"Active\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -365,7 +601,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7285/api/Category/DeleteData?categoryId=4",
+							"raw": "https://localhost:7285/api/Category/DeleteData?categoryId=1",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -379,7 +615,7 @@
 							"query": [
 								{
 									"key": "categoryId",
-									"value": "4"
+									"value": "1"
 								}
 							]
 						}
@@ -443,7 +679,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7285/api/Category/GetById?categoryId=2",
+							"raw": "https://localhost:7285/api/Category/GetById?categoryId=1",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -457,7 +693,231 @@
 							"query": [
 								{
 									"key": "categoryId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "SaveData",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"SKU\": \"WES303420231126\",\r\n    \"ProductName\": \"WES Casuals Light Teal Printed Slim-Fit Shirt\",\r\n    \"SupplierId\": 2,\r\n    \"CategoryId\": 3,\r\n    \"Size\": \"S\",\r\n    \"Color\": \"Red\",\r\n    \"UnitWeight\": 100,\r\n    \"UnitsInStock\": 100,\r\n    \"DiscountType\": \"Percentage\",\r\n    \"DiscountValue\": 10,\r\n    \"Active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Product/SaveData",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Product",
+								"SaveData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Data",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": 1,\r\n    \"SKU\": \"WES30342023\",\r\n    \"ProductName\": \"WES Casuals Navy Printed Relaxed-Fit Shirt\",\r\n    \"SupplierId\": 2,\r\n    \"CategoryId\": 3,\r\n    \"Size\": \"S\",\r\n    \"Color\": \"Red\",\r\n    \"UnitWeight\": 100,\r\n    \"UnitsInStock\": 100,\r\n    \"DiscountType\": \"Percentage\",\r\n    \"DiscountValue\": 10,\r\n    \"Active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Product/SaveData",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Product",
+								"SaveData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Data",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Product/DeleteData?productId=2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Product",
+								"DeleteData"
+							],
+							"query": [
+								{
+									"key": "productId",
 									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7285/api/Product/GetAll",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Product",
+								"GetAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7285/api/Product/GetById?productId=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Product",
+								"GetById"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "1"
 								}
 							]
 						}
