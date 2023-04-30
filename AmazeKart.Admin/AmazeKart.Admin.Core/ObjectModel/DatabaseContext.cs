@@ -26,8 +26,10 @@
             modelBuilder.Entity<Category>().HasKey(c => c.Id);
             modelBuilder.Entity<Customer>().HasKey(c => c.Id);
             modelBuilder.Entity<Order>().HasKey(c => c.Id);
+
             modelBuilder.Entity<OrderDetail>().HasKey(c => c.OrderId);
             modelBuilder.Entity<OrderDetail>().HasKey(c => c.ProductId);
+
             modelBuilder.Entity<PaymentDetail>().HasKey(c => c.Id);
             modelBuilder.Entity<Product>().HasKey(c => c.Id);
             modelBuilder.Entity<Supplier>().HasKey(c => c.Id);
