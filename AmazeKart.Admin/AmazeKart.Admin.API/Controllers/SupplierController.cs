@@ -1,4 +1,5 @@
-﻿using AmazeKart.Admin.Core.Enums;
+﻿using AmazeKart.Admin.API.Helpers;
+using AmazeKart.Admin.Core.Enums;
 using AmazeKart.Admin.Core.IBal;
 using AmazeKart.Admin.Core.ViewModel;
 using Microsoft.AspNetCore.Mvc;
@@ -19,10 +20,15 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpPost, Route("SaveData")]
         public IActionResult SaveData(Supplier entity)
         {
+            if (!ModelState.IsValid)
+            {
+                return Ok(new ResponseResult(HttpStatusCode.BadRequest, ModelState.GetInvalidModelStateErrors(), null, MessageType.Warning.GetStringValue()));
+            }
+
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage;
 
-            if (entity.SupplierId == 0)
+            if (entity.Id == 0)
             {
                 resultMessage = MessageConstants.RecordInsertSuccessfully;
                 rMsg = _supplierBAL.Create(entity);
@@ -41,6 +47,12 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpPost, Route("DeleteData")]
         public IActionResult DeleteData(int supplierId)
         {
+            if (supplierId == 0)
+            {
+                ResultMessage notFoundMessage = ResultMessage.NotFound;
+                return Ok(new ResponseResult(HttpStatusCode.BadRequest, notFoundMessage.GetStringValue(), null, MessageType.Warning.GetStringValue()));
+            }
+
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage = MessageConstants.RecordDeleteSuccessfully;
             rMsg = _supplierBAL.Delete(supplierId);
@@ -61,6 +73,12 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpGet, Route("GetById")]
         public IActionResult GetById(int supplierId)
         {
+            if (supplierId == 0)
+            {
+                ResultMessage notFoundMessage = ResultMessage.NotFound;
+                return Ok(new ResponseResult(HttpStatusCode.BadRequest, notFoundMessage.GetStringValue(), null, MessageType.Warning.GetStringValue()));
+            }
+
             Supplier supplier = _supplierBAL.GetById(supplierId);
             return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, supplier, MessageType.Success.GetStringValue()));
         }

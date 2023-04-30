@@ -31,10 +31,10 @@ namespace AmazeKart.Admin.Core.ObjectModel
         public string Color { get; set; }
 
         [DataMember]
-        public string UnitWeight { get; set; }
+        public decimal UnitWeight { get; set; }
 
         [DataMember]
-        public string UnitsInStock { get; set; }
+        public long UnitsInStock { get; set; }
 
         [DataMember]
         public string DiscountType { get; set; }

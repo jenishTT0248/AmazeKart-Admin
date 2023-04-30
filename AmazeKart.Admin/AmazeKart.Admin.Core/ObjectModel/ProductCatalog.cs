@@ -18,14 +18,15 @@ namespace AmazeKart.Admin.Core.ObjectModel
         public int ProductId { get; set; }
 
         [DataMember]
+        public string ProductImage { get; set; }
+
+        [DataMember]
+        public string MediaType { get; set; }
+
+        [DataMember]
         public bool Active { get; set; }
 
         [DataMember]
         public virtual Product Product { get; set; }
-
-        [DataMember]
-        public string ProductImage { get; set; }
-        [DataMember]
-        public string MediaType { get; set; }
     }
 }
