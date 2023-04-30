@@ -25,7 +25,9 @@ namespace AmazeKart.Admin.Core.Enums
         [StringValue("Record not found: Please edit your search and try again.")]
         RecordNotFound = 3,
         [StringValue("Your username and password were not recognized. Please review your inputs and try again.")]
-        InvalidUserName = 4
+        InvalidUserName = 4,
+        [StringValue("Not Found")]
+        NotFound = 5
     }
 
     public enum MessageConstants

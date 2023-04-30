@@ -1,4 +1,5 @@
 ﻿using ViewModel = AmazeKart.Admin.Core.ViewModel;
+using ViewModelResponse = AmazeKart.Admin.Core.ViewModel.Response;
 using  ObjectModel= AmazeKart.Admin.Core.ObjectModel;
 using AutoMapper;
 
@@ -28,6 +29,11 @@ namespace AmazeKart.Admin.API.App_Start
 
             CreateMap<ViewModel.Product, ObjectModel.Product>();
             CreateMap<ObjectModel.Product, ViewModel.Product>();
+
+            CreateMap<ObjectModel.Product, ViewModelResponse.ProductResponse>();                
+
+            CreateMap<ViewModel.ProductCatalog, ObjectModel.ProductCatalog>();
+            CreateMap<ObjectModel.ProductCatalog, ViewModel.ProductCatalog>();
 
             CreateMap<ViewModel.Cart, ObjectModel.Cart>();
             CreateMap<ObjectModel.Cart, ViewModel.Cart>();
