@@ -50,10 +50,10 @@ namespace AmazeKart.Admin.Infrastructure.Bal
             return productCatalogsList.AsQueryable();
         }
       
-        public ViewModel.ProductCatalog GetById(int productCatalogId)
+        public ViewModelResponse.ProductCatalogResponse GetById(int productCatalogId)
         {
             ObjectModel.ProductCatalog productCatalog = _productCatalogService.GetById(productCatalogId);
-            ViewModel.ProductCatalog productCatalogViewModel = _mapper.Map<ObjectModel.ProductCatalog, ViewModel.ProductCatalog>(productCatalog);
+            ViewModelResponse.ProductCatalogResponse productCatalogViewModel = _mapper.Map<ObjectModel.ProductCatalog, ViewModelResponse.ProductCatalogResponse>(productCatalog);
             return productCatalogViewModel;
         }
     }
