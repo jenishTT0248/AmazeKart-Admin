@@ -35,6 +35,8 @@ namespace AmazeKart.Admin.API.App_Start
             CreateMap<ViewModel.ProductCatalog, ObjectModel.ProductCatalog>();
             CreateMap<ObjectModel.ProductCatalog, ViewModel.ProductCatalog>();
 
+            CreateMap<ObjectModel.ProductCatalog, ViewModelResponse.ProductCatalogResponse>();
+
             CreateMap<ViewModel.Cart, ObjectModel.Cart>();
             CreateMap<ObjectModel.Cart, ViewModel.Cart>();
         }

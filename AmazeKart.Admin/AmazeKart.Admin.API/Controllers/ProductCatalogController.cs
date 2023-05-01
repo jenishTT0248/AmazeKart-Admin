@@ -1,6 +1,8 @@
-﻿using AmazeKart.Admin.Core.Enums;
+﻿using AmazeKart.Admin.API.Helpers;
+using AmazeKart.Admin.Core.Enums;
 using AmazeKart.Admin.Core.IBal;
 using AmazeKart.Admin.Core.ViewModel;
+using AmazeKart.Admin.Core.ViewModel.Response;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -18,10 +20,16 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpPost, Route("SaveData")]
         public IActionResult SaveData(ProductCatalog entity)
         {
+
+            if (!ModelState.IsValid)
+            {
+                return Ok(new ResponseResult(HttpStatusCode.BadRequest, ModelState.GetInvalidModelStateErrors(), null, MessageType.Warning.GetStringValue()));
+            }
+
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage;
 
-            if (entity.ProductId == 0)
+            if (entity.Id == 0)
             {
                 resultMessage = MessageConstants.RecordInsertSuccessfully;
                 rMsg = _productCatalogBAL.Create(entity);
@@ -40,6 +48,12 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpPost, Route("DeleteData")]
         public IActionResult DeleteData(int productCatalogId)
         {
+            if (productCatalogId == 0)
+            {
+                ResultMessage notFoundMessage = ResultMessage.NotFound;
+                return Ok(new ResponseResult(HttpStatusCode.BadRequest, notFoundMessage.GetStringValue(), null, MessageType.Warning.GetStringValue()));
+            }
+
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage = MessageConstants.RecordDeleteSuccessfully;
             rMsg = _productCatalogBAL.Delete(productCatalogId);
@@ -53,14 +67,20 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpGet, Route("GetAll")]
         public IActionResult GetAll()
         {
-            List<ProductCatalog> productCatalogs = _productCatalogBAL.GetAll().ToList();
+            List<ProductCatalogResponse> productCatalogs = _productCatalogBAL.GetAll().ToList();            
             return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, productCatalogs, MessageType.Success.GetStringValue()));
         }
 
         [HttpGet, Route("GetById")]
         public IActionResult GetById(int productCatalogId)
         {
-            ProductCatalog productCatalog = _productCatalogBAL.GetById(productCatalogId);
+            if (productCatalogId == 0)
+            {
+                ResultMessage notFoundMessage = ResultMessage.NotFound;
+                return Ok(new ResponseResult(HttpStatusCode.BadRequest, notFoundMessage.GetStringValue(), null, MessageType.Warning.GetStringValue()));
+            }
+
+            ProductCatalogResponse productCatalog = _productCatalogBAL.GetById(productCatalogId);
             return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, productCatalog, MessageType.Success.GetStringValue()));
         }
     }

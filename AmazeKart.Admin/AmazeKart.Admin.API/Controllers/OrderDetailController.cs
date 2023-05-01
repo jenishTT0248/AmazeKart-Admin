@@ -7,6 +7,7 @@ using ViewModel = AmazeKart.Admin.Core.ViewModel;
 
 namespace AmazeKart.Admin.API.Controllers
 {
+    [Route("api/OrderDetail")]
     public class OrderDetailController : BaseAPIController
     {
         private readonly IOrderDetailBAL _orderDetailBAL;

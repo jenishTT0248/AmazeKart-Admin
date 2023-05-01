@@ -925,6 +925,532 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Product Catalog",
+			"item": [
+				{
+					"name": "SaveData",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"ProductId\": 1,\r\n    \"ProductImage\": \"https://www.pexels.com/search/product/\",\r\n    \"MediaType\": \"image/png\",\r\n    \"Active\": true    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/ProductCatalog/SaveData",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"ProductCatalog",
+								"SaveData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Data",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": 1,    \r\n    \"ProductId\": 1,\r\n    \"ProductImage\": \"https://www.pexels.com/search/product/\",\r\n    \"MediaType\": \"image/png\",\r\n    \"Active\": true    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/ProductCatalog/SaveData",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"ProductCatalog",
+								"SaveData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Data",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/ProductCatalog/DeleteData?productCatalogId=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"ProductCatalog",
+								"DeleteData"
+							],
+							"query": [
+								{
+									"key": "productCatalogId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7285/api/ProductCatalog/GetAll",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"ProductCatalog",
+								"GetAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7285/api/ProductCatalog/GetById?productCatalogId=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"ProductCatalog",
+								"GetById"
+							],
+							"query": [
+								{
+									"key": "productCatalogId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "SaveData",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"FirstName\": \"Ram\",\r\n    \"LastName\": \"Patel\",\r\n    \"Phone\": \"0261-2687456\",\r\n    \"Email\": \"rampatel@gmailcom\",\r\n    \"Address1\": \"Ranchodji park society\",\r\n    \"Address2\": \"beind kantareshvar temple\",\r\n    \"City\": \"Surat\",\r\n    \"State\": \"Gujarat\",\r\n    \"PostalCode\": \"395004\",\r\n    \"Country\": \"India\",\r\n    \"Password\": \"triveni123\",\r\n    \"BillingAddress\": \"Ranchodji park society\",\r\n    \"BillingCity\": \"Surat\",\r\n    \"BillingState\": \"Gujarat\",\r\n    \"BillingPostalCode\": \"395004\",\r\n    \"BillingCountry\": \"India\",\r\n    \"ShipAddress\": \"Ranchodji park society\",\r\n    \"ShipCity\": \"Surat\",\r\n    \"ShipState\": \"Gujarat\",\r\n    \"ShipPostalCode\": \"395004\",\r\n    \"ShipCountry\": \"India\",\r\n    \"Active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Customer/SaveData",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Customer",
+								"SaveData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Data",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"Id\": 1,\r\n    \"FirstName\": \"Ram\",\r\n    \"LastName\": \"Patel\",\r\n    \"Phone\": \"0261-2687456\",\r\n    \"Email\": \"rampatel@gmailcom\",\r\n    \"Address1\": \"Ranchodji park society\",\r\n    \"Address2\": \"beind kantareshvar temple\",\r\n    \"City\": \"Surat\",\r\n    \"State\": \"Gujarat\",\r\n    \"PostalCode\": \"395004\",\r\n    \"Country\": \"India\",\r\n    \"Password\": \"triveni123\",\r\n    \"BillingAddress\": \"Ranchodji park society\",\r\n    \"BillingCity\": \"Surat\",\r\n    \"BillingState\": \"Gujarat\",\r\n    \"BillingPostalCode\": \"395004\",\r\n    \"BillingCountry\": \"India\",\r\n    \"ShipAddress\": \"Ranchodji park society\",\r\n    \"ShipCity\": \"Surat\",\r\n    \"ShipState\": \"Gujarat\",\r\n    \"ShipPostalCode\": \"395004\",\r\n    \"ShipCountry\": \"India\",\r\n    \"Active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Customer/SaveData",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Customer",
+								"SaveData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Data",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Customer/DeleteData?customerId=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Customer",
+								"DeleteData"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7285/api/Customer/GetAll",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Customer",
+								"GetAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7285/api/Customer/GetById?customerId=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Customer",
+								"GetById"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7285/api/Product/GetAll",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Product",
+								"GetAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7285/api/Product/GetById?productId=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Product",
+								"GetById"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
