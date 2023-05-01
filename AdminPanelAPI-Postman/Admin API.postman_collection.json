@@ -1371,6 +1371,84 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7285/api/Product/GetAll",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Product",
+								"GetAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7285/api/Product/GetById?productId=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Product",
+								"GetById"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

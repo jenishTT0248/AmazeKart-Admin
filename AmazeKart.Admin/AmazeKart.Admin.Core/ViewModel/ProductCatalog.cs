@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
 namespace AmazeKart.Admin.Core.ViewModel
 {
     public  class ProductCatalog
@@ -14,6 +13,7 @@ namespace AmazeKart.Admin.Core.ViewModel
         
         [Required(AllowEmptyStrings = false)]
         public string MediaType { get; set; }
-        public bool Active { get; set; }        
+        
+        public bool Active { get; set; }                
     }
 }

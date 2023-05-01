@@ -6,6 +6,7 @@ using ObjectModel = AmazeKart.Admin.Core.ObjectModel;
 using ViewModel = AmazeKart.Admin.Core.ViewModel;
 using ViewModelResponse = AmazeKart.Admin.Core.ViewModel.Response;
 
+
 namespace AmazeKart.Admin.Infrastructure.Bal
 {
     public class ProductCatalogBAL : IProductCatalogBAL
@@ -39,8 +40,8 @@ namespace AmazeKart.Admin.Infrastructure.Bal
         public ResultMessage Delete(int productCatalogId)
         {
             return _productCatalogService.Delete(productCatalogId);
-        }
-        
+        }        
+
         public IQueryable<ViewModelResponse.ProductCatalogResponse> GetAll()
         {
             var productCatalogs = _productCatalogService.GetAll().ToList();
@@ -48,11 +49,11 @@ namespace AmazeKart.Admin.Infrastructure.Bal
             productCatalogsList = _mapper.Map<List<ObjectModel.ProductCatalog>, List<ViewModelResponse.ProductCatalogResponse>>(productCatalogs);
             return productCatalogsList.AsQueryable();
         }
-
-        public ViewModelResponse.ProductCatalogResponse GetById(int productCatalogId)
+      
+        public ViewModel.ProductCatalog GetById(int productCatalogId)
         {
             ObjectModel.ProductCatalog productCatalog = _productCatalogService.GetById(productCatalogId);
-            ViewModelResponse.ProductCatalogResponse productCatalogViewModel = _mapper.Map<ObjectModel.ProductCatalog, ViewModelResponse.ProductCatalogResponse>(productCatalog);
+            ViewModel.ProductCatalog productCatalogViewModel = _mapper.Map<ObjectModel.ProductCatalog, ViewModel.ProductCatalog>(productCatalog);
             return productCatalogViewModel;
         }
     }

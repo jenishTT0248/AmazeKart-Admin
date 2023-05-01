@@ -20,6 +20,7 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpPost, Route("SaveData")]
         public IActionResult SaveData(ProductCatalog entity)
         {
+
             if (!ModelState.IsValid)
             {
                 return Ok(new ResponseResult(HttpStatusCode.BadRequest, ModelState.GetInvalidModelStateErrors(), null, MessageType.Warning.GetStringValue()));
@@ -66,7 +67,7 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpGet, Route("GetAll")]
         public IActionResult GetAll()
         {
-            List<ProductCatalogResponse> productCatalogs = _productCatalogBAL.GetAll().ToList();
+            List<ProductCatalogResponse> productCatalogs = _productCatalogBAL.GetAll().ToList();            
             return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, productCatalogs, MessageType.Success.GetStringValue()));
         }
 
