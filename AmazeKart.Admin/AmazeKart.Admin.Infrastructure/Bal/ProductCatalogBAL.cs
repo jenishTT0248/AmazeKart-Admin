@@ -48,8 +48,8 @@ namespace AmazeKart.Admin.Infrastructure.Bal
             List<ViewModelResponse.ProductCatalogResponse> productCatalogsList = new();
             productCatalogsList = _mapper.Map<List<ObjectModel.ProductCatalog>, List<ViewModelResponse.ProductCatalogResponse>>(productCatalogs);
             return productCatalogsList.AsQueryable();
-        }
-      
+        }      
+
         public ViewModelResponse.ProductCatalogResponse GetById(int productCatalogId)
         {
             ObjectModel.ProductCatalog productCatalog = _productCatalogService.GetById(productCatalogId);
