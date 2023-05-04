@@ -1,6 +1,7 @@
 ﻿using AmazeKart.Admin.Core.Enums;
 using AmazeKart.Admin.Core.IBal;
 using AmazeKart.Admin.Core.ViewModel;
+using AmazeKart.Admin.Core.ViewModel.Response;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -54,14 +55,14 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpGet, Route("GetAll")]
         public IActionResult GetAll()
         {
-            List<Cart> cartList = _cartBAL.GetAll().ToList();
+            List<CartResponse> cartList = _cartBAL.GetAll().ToList();
             return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, cartList, MessageType.Success.GetStringValue()));
         }
 
         [HttpGet, Route("GetById")]
         public IActionResult GetById(int cartId)
         {
-            Cart cart = _cartBAL.GetById(cartId);
+            CartResponse cart = _cartBAL.GetById(cartId);
             return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, cart, MessageType.Success.GetStringValue()));
         }
     }

@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "PaymentType",
+			"name": "PaymentDetail",
 			"item": [
 				{
 					"name": "SaveData",
@@ -1371,6 +1371,152 @@
 						}
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "SaveData",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"CustomerId\": 2,\r\n    \"ProductId\": 1,\r\n    \"Quantity\": 10    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Cart/SaveData",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Cart",
+								"SaveData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Data",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"Id\": 1,\r\n    \"CustomerId\": 2,\r\n    \"ProductId\": 1,\r\n    \"Quantity\": 5    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Cart/SaveData",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Cart",
+								"SaveData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Data",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Cart/DeleteData?cartId=2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Cart",
+								"DeleteData"
+							],
+							"query": [
+								{
+									"key": "cartId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
 				},
 				{
 					"name": "GetAll",
@@ -1393,7 +1539,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7285/api/Product/GetAll",
+							"raw": "https://localhost:7285/api/Cart/GetAll",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -1401,7 +1547,7 @@
 							"port": "7285",
 							"path": [
 								"api",
-								"Product",
+								"Cart",
 								"GetAll"
 							]
 						}
@@ -1429,7 +1575,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7285/api/Product/GetById?productId=1",
+							"raw": "https://localhost:7285/api/Cart/GetById?cartId=1",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -1437,12 +1583,12 @@
 							"port": "7285",
 							"path": [
 								"api",
-								"Product",
+								"Cart",
 								"GetById"
 							],
 							"query": [
 								{
-									"key": "productId",
+									"key": "cartId",
 									"value": "1"
 								}
 							]

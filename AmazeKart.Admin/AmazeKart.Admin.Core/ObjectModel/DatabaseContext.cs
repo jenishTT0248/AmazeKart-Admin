@@ -19,6 +19,7 @@
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<ProductCatalog> ProductCatalogs { get; set; }
+        public virtual DbSet<Cart> CartDetails { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -34,6 +35,8 @@
             modelBuilder.Entity<Product>().HasKey(c => c.Id);
             modelBuilder.Entity<Supplier>().HasKey(c => c.Id);
             modelBuilder.Entity<ProductCatalog>().HasKey(c => c.Id);
+
+            modelBuilder.Entity<Cart>().HasKey(c => c.Id);
             base.OnModelCreating(modelBuilder);
         }
 
