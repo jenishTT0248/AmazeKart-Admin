@@ -4,6 +4,7 @@ using AmazeKart.Admin.Core.IServices;
 using AutoMapper;
 using ObjectModel = AmazeKart.Admin.Core.ObjectModel;
 using ViewModel = AmazeKart.Admin.Core.ViewModel;
+using ViewModelResponse = AmazeKart.Admin.Core.ViewModel.Response;
 
 namespace AmazeKart.Admin.Infrastructure.Bal
 {
@@ -40,18 +41,18 @@ namespace AmazeKart.Admin.Infrastructure.Bal
             return _cartService.Delete(cartId);
         }
 
-        public IQueryable<ViewModel.Cart> GetAll()
+        public IQueryable<ViewModelResponse.CartResponse> GetAll()
         {
             var cartData = _cartService.GetAll().ToList();
-            List<ViewModel.Cart> cartViewModel = new();
-            cartViewModel = _mapper.Map<List<ObjectModel.Cart>, List<ViewModel.Cart>>(cartData);
+            List<ViewModelResponse.CartResponse> cartViewModel = new();
+            cartViewModel = _mapper.Map<List<ObjectModel.Cart>, List<ViewModelResponse.CartResponse>>(cartData);
             return cartViewModel.AsQueryable();
         }
 
-        public ViewModel.Cart GetById(int cartId)
+        public ViewModelResponse.CartResponse GetById(int cartId)
         {
             ObjectModel.Cart cart = _cartService.GetById(cartId);
-            ViewModel.Cart cartViewModel = _mapper.Map<ObjectModel.Cart, ViewModel.Cart>(cart);
+            ViewModelResponse.CartResponse cartViewModel = _mapper.Map<ObjectModel.Cart, ViewModelResponse.CartResponse>(cart);
             return cartViewModel;
         }
     }

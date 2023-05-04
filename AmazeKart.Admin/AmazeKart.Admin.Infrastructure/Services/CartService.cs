@@ -22,8 +22,8 @@ namespace AmazeKart.Admin.Infrastructure.Services
             
             bool isCartExists = _cartRepository.Any(y => y.Id == cart.Id);
             
-            if (isCartExists == false)
-                return ResultMessage.RecordNotFound;
+            if (isCartExists)
+                return ResultMessage.RecordExists;
 
             _cartRepository.Create(cart);
             _unitOfWork.Commit();
