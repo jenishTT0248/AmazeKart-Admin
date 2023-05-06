@@ -1,6 +1,8 @@
+using AmazeKart.Admin.API.Helpers;
 using AmazeKart.Admin.Core.Enums;
 using AmazeKart.Admin.Core.IBal;
 using AmazeKart.Admin.Core.ViewModel;
+using AmazeKart.Admin.Core.ViewModel.Response;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -19,6 +21,11 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpPost, Route("SaveData")]
         public IActionResult SaveData(PaymentDetail entity)
         {
+            if (!ModelState.IsValid)
+            {
+                return Ok(new ResponseResult(HttpStatusCode.BadRequest, ModelState.GetInvalidModelStateErrors(), null, MessageType.Warning.GetStringValue()));
+            }
+
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage;
 
@@ -40,7 +47,13 @@ namespace AmazeKart.Admin.API.Controllers
 
         [HttpPost, Route("DeleteData")]
         public IActionResult DeleteData(int paymentId)
-        {            
+        {
+            if (paymentId <= 0)
+            {
+                ResultMessage notFoundMessage = ResultMessage.NotFound;
+                return Ok(new ResponseResult(HttpStatusCode.BadRequest, notFoundMessage.GetStringValue(), null, MessageType.Warning.GetStringValue()));
+            }
+
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage = MessageConstants.RecordDeleteSuccessfully;
             rMsg = _paymentDetailBAL.Delete(paymentId);
@@ -54,14 +67,14 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpGet, Route("GetAll")]
         public IActionResult GetAll()
         {
-            List<PaymentDetail> paymentDetails = _paymentDetailBAL.GetAll().ToList();
+            List<PaymentDetailResponse> paymentDetails = _paymentDetailBAL.GetAll().ToList();
             return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, paymentDetails, MessageType.Success.GetStringValue()));
         }
 
         [HttpGet, Route("GetById")]
         public IActionResult GetById(int paymentId)
         {
-            PaymentDetail paymentDetail = _paymentDetailBAL.GetById(paymentId);
+            PaymentDetailResponse paymentDetail = _paymentDetailBAL.GetById(paymentId);
             return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, paymentDetail, MessageType.Success.GetStringValue()));
         }
     }

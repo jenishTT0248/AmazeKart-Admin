@@ -12,6 +12,8 @@ namespace AmazeKart.Admin.API.App_Start
             CreateMap<ViewModel.PaymentDetail, ObjectModel.PaymentDetail>();
             CreateMap<ObjectModel.PaymentDetail, ViewModel.PaymentDetail>();
 
+            CreateMap<ObjectModel.PaymentDetail, ViewModelResponse.PaymentDetailResponse>();
+
             CreateMap<ViewModel.Category, ObjectModel.Category>();
             CreateMap<ObjectModel.Category, ViewModel.Category>();
 
@@ -20,6 +22,8 @@ namespace AmazeKart.Admin.API.App_Start
 
             CreateMap<ViewModel.Order, ObjectModel.Order>();
             CreateMap<ObjectModel.Order, ViewModel.Order>();
+            
+            CreateMap<ObjectModel.Order, ViewModelResponse.OrderResponse>();
 
             CreateMap<ViewModel.OrderDetail, ObjectModel.OrderDetail>();
             CreateMap<ObjectModel.OrderDetail, ViewModel.OrderDetail>();

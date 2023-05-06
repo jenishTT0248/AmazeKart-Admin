@@ -1,5 +1,6 @@
 ﻿using AmazeKart.Admin.Core.Enums;
 using AmazeKart.Admin.Core.ViewModel;
+using AmazeKart.Admin.Core.ViewModel.Response;
 
 namespace AmazeKart.Admin.Core.IBal
 {
@@ -8,7 +9,7 @@ namespace AmazeKart.Admin.Core.IBal
         ResultMessage Create(Order entity);
         ResultMessage Update(Order entity);
         ResultMessage Delete(int orderId);
-        IQueryable<Order> GetAll();
-        Order GetById(int orderId);
+        IQueryable<OrderResponse> GetAll();
+        OrderResponse GetById(int orderId);
     }
 }
