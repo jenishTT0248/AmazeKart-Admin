@@ -1,6 +1,8 @@
-﻿using AmazeKart.Admin.Core.Enums;
+﻿using AmazeKart.Admin.API.Helpers;
+using AmazeKart.Admin.Core.Enums;
 using AmazeKart.Admin.Core.IBal;
 using AmazeKart.Admin.Core.ViewModel;
+using AmazeKart.Admin.Core.ViewModel.Response;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -18,6 +20,11 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpPost, Route("SaveData")]
         public IActionResult SaveData(Order order)
         {
+            if (!ModelState.IsValid)
+            {
+                return Ok(new ResponseResult(HttpStatusCode.BadRequest, ModelState.GetInvalidModelStateErrors(), null, MessageType.Warning.GetStringValue()));
+            }
+
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage;
 
@@ -40,6 +47,12 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpPost, Route("DeleteData")]
         public IActionResult Delete(int orderId)
         {
+            if (orderId <= 0)
+            {
+                ResultMessage notFoundMessage = ResultMessage.NotFound;
+                return Ok(new ResponseResult(HttpStatusCode.BadRequest, notFoundMessage.GetStringValue(), null, MessageType.Warning.GetStringValue()));
+            }
+
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage = MessageConstants.RecordDeleteSuccessfully;
             rMsg = _orderBAL.Delete(orderId);
@@ -53,14 +66,20 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpGet, Route("GetAll")]
         public IActionResult GetAll()
         {
-            List<Order> orders = _orderBAL.GetAll().ToList();
+            List<OrderResponse> orders = _orderBAL.GetAll().ToList();
             return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, orders, MessageType.Success.GetStringValue()));
         }
 
         [HttpGet, Route("GetById")]
         public IActionResult GetById(int orderId)
         {
-            Order order = _orderBAL.GetById(orderId);
+            if (orderId <= 0)
+            {
+                ResultMessage notFoundMessage = ResultMessage.NotFound;
+                return Ok(new ResponseResult(HttpStatusCode.BadRequest, notFoundMessage.GetStringValue(), null, MessageType.Warning.GetStringValue()));
+            }
+
+            OrderResponse order = _orderBAL.GetById(orderId);
             return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, order, MessageType.Success.GetStringValue()));
         }
     }

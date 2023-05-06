@@ -47,7 +47,7 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpPost, Route("DeleteData")]
         public IActionResult DeleteData(int productId)
         {
-            if (productId == 0)
+            if (productId <= 0)
             {
                 ResultMessage notFoundMessage = ResultMessage.NotFound;
                 return Ok(new ResponseResult(HttpStatusCode.BadRequest, notFoundMessage.GetStringValue(), null, MessageType.Warning.GetStringValue()));
@@ -73,7 +73,7 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpGet, Route("GetById")]
         public IActionResult GetById(int productId)
         {
-            if (productId == 0)
+            if (productId <= 0)
             {
                 ResultMessage notFoundMessage = ResultMessage.NotFound;
                 return Ok(new ResponseResult(HttpStatusCode.BadRequest, notFoundMessage.GetStringValue(), null, MessageType.Warning.GetStringValue()));

@@ -4,6 +4,7 @@ using AmazeKart.Admin.Core.IServices;
 using AutoMapper;
 using ObjectModel = AmazeKart.Admin.Core.ObjectModel;
 using ViewModel = AmazeKart.Admin.Core.ViewModel;
+using ViewModelResponse = AmazeKart.Admin.Core.ViewModel.Response;
 
 namespace AmazeKart.Admin.Infrastructure.Bal
 {
@@ -41,18 +42,18 @@ namespace AmazeKart.Admin.Infrastructure.Bal
             return _paymentDetailService.Delete(paymentId);
         }
 
-        public IQueryable<ViewModel.PaymentDetail> GetAll()
+        public IQueryable<ViewModelResponse.PaymentDetailResponse> GetAll()
         {            
             var paymentDetails = _paymentDetailService.GetAll().ToList();
-            List<ViewModel.PaymentDetail> paymentDetailList = new();
-            paymentDetailList = _mapper.Map<List<ObjectModel.PaymentDetail>, List<ViewModel.PaymentDetail>>(paymentDetails);
+            List<ViewModelResponse.PaymentDetailResponse> paymentDetailList = new();
+            paymentDetailList = _mapper.Map<List<ObjectModel.PaymentDetail>, List<ViewModelResponse.PaymentDetailResponse>>(paymentDetails);
             return paymentDetailList.AsQueryable();
         }
 
-        public ViewModel.PaymentDetail GetById(int paymentId)
+        public ViewModelResponse.PaymentDetailResponse GetById(int paymentId)
         {
             ObjectModel.PaymentDetail paymentDetail = _paymentDetailService.GetById(paymentId);
-            ViewModel.PaymentDetail paymentDetailViewModel = _mapper.Map<ObjectModel.PaymentDetail, ViewModel.PaymentDetail>(paymentDetail);
+            ViewModelResponse.PaymentDetailResponse paymentDetailViewModel = _mapper.Map<ObjectModel.PaymentDetail, ViewModelResponse.PaymentDetailResponse>(paymentDetail);
             return paymentDetailViewModel;
         }
     }

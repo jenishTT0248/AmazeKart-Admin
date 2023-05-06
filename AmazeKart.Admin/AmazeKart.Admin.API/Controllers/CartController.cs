@@ -1,4 +1,5 @@
-﻿using AmazeKart.Admin.Core.Enums;
+﻿using AmazeKart.Admin.API.Helpers;
+using AmazeKart.Admin.Core.Enums;
 using AmazeKart.Admin.Core.IBal;
 using AmazeKart.Admin.Core.ViewModel;
 using AmazeKart.Admin.Core.ViewModel.Response;
@@ -20,6 +21,11 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpPost, Route("SaveData")]
         public IActionResult SaveData(Cart entity)
         {
+            if (!ModelState.IsValid)
+            {
+                return Ok(new ResponseResult(HttpStatusCode.BadRequest, ModelState.GetInvalidModelStateErrors(), null, MessageType.Warning.GetStringValue()));
+            }
+
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage;
 
@@ -42,6 +48,12 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpPost, Route("DeleteData")]
         public IActionResult DeleteData(int cartId)
         {
+            if (cartId <= 0)
+            {
+                ResultMessage notFoundMessage = ResultMessage.NotFound;
+                return Ok(new ResponseResult(HttpStatusCode.BadRequest, notFoundMessage.GetStringValue(), null, MessageType.Warning.GetStringValue()));
+            }
+
             ResultMessage rMsg = ResultMessage.RecordNotFound;
             MessageConstants resultMessage = MessageConstants.RecordDeleteSuccessfully;
             rMsg = _cartBAL.Delete(cartId);
@@ -62,6 +74,12 @@ namespace AmazeKart.Admin.API.Controllers
         [HttpGet, Route("GetById")]
         public IActionResult GetById(int cartId)
         {
+            if (cartId <= 0)
+            {
+                ResultMessage notFoundMessage = ResultMessage.NotFound;
+                return Ok(new ResponseResult(HttpStatusCode.BadRequest, notFoundMessage.GetStringValue(), null, MessageType.Warning.GetStringValue()));
+            }
+
             CartResponse cart = _cartBAL.GetById(cartId);
             return Ok(new ResponseResult(HttpStatusCode.OK, string.Empty, cart, MessageType.Success.GetStringValue()));
         }

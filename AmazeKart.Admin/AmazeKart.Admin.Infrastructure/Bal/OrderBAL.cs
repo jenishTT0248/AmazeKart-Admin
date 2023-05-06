@@ -4,6 +4,7 @@ using AmazeKart.Admin.Core.IServices;
 using AutoMapper;
 using ObjectModel = AmazeKart.Admin.Core.ObjectModel;
 using ViewModel = AmazeKart.Admin.Core.ViewModel;
+using ViewModelResponse = AmazeKart.Admin.Core.ViewModel.Response;
 
 namespace AmazeKart.Admin.Infrastructure.Bal
 {
@@ -32,18 +33,18 @@ namespace AmazeKart.Admin.Infrastructure.Bal
             return _orderService.Delete(orderId);
         }
 
-        public IQueryable<ViewModel.Order> GetAll()
+        public IQueryable<ViewModelResponse.OrderResponse> GetAll()
         {
             var orders = _orderService.GetAll().ToList();
-            List<ViewModel.Order> orderList = new();
-            orderList = _mapper.Map<List<ObjectModel.Order>, List<ViewModel.Order>>(orders);
+            List<ViewModelResponse.OrderResponse> orderList = new();
+            orderList = _mapper.Map<List<ObjectModel.Order>, List<ViewModelResponse.OrderResponse>>(orders);
             return orderList.AsQueryable();
         }
 
-        public ViewModel.Order GetById(int orderId)
+        public ViewModelResponse.OrderResponse GetById(int orderId)
         {
             ObjectModel.Order order = _orderService.GetById(orderId);
-            ViewModel.Order orderViewModel = _mapper.Map<ObjectModel.Order, ViewModel.Order>(order);
+            ViewModelResponse.OrderResponse orderViewModel = _mapper.Map<ObjectModel.Order, ViewModelResponse.OrderResponse>(order);
             return orderViewModel;
         }
 

@@ -1,12 +1,18 @@
-﻿namespace AmazeKart.Admin.Core.ViewModel
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AmazeKart.Admin.Core.ViewModel
 {
     public class PaymentDetail
     {
         public int Id { get; set; }
-        public int OrderId { get; set; }
+        public int? OrderId { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
         public decimal Amount { get; set; }
+        
+        [Required(AllowEmptyStrings = false)]
         public string Status { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public Order Order { get; set; }
+        
+        public DateTime CreatedDate { get; set; }        
     }
 }
