@@ -27,7 +27,9 @@ namespace AmazeKart.Admin.Core.Enums
         [StringValue("Your username and password were not recognized. Please review your inputs and try again.")]
         InvalidUserName = 4,
         [StringValue("Not Found")]
-        NotFound = 5
+        NotFound = 5,
+        [StringValue("OrderId and ProductId must be greater than zero.")]
+        InvalidOrderDetail = 6
     }
 
     public enum MessageConstants

@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace AmazeKart.Admin.Core.ObjectModel
 {
@@ -15,9 +14,6 @@ namespace AmazeKart.Admin.Core.ObjectModel
 
         [DataMember]
         public int ProductId { get; set; }
-
-        [DataMember]
-        public virtual Product Product { get; set; }
 
         [DataMember]
         public int Quantity { get; set; }
