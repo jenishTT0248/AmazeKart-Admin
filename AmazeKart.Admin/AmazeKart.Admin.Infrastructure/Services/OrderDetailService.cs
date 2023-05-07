@@ -16,20 +16,23 @@ namespace AmazeKart.Admin.Infrastructure.Services
             _unitOfWork = unitOfWork;
         }
 
-        public ResultMessage SaveData(OrderDetail orderDetail)
+        public ResultMessage SaveData(List<OrderDetail> orderDetail)
         {
             if (orderDetail == null) return ResultMessage.RecordNotFound;
 
-            OrderDetail dbOrderDetail = _orderDetailRepository.FindOne(x => x.OrderId == orderDetail.OrderId && x.ProductId == orderDetail.ProductId);
+            foreach (var order in orderDetail)
+            {
+                OrderDetail dbOrderDetail = _orderDetailRepository.FindOne(x => x.OrderId == order.OrderId && x.ProductId == order.ProductId);
 
-            if (dbOrderDetail == null)
-            {
-                _orderDetailRepository.Create(orderDetail);
-            }
-            else
-            {
-                _orderDetailRepository.SetValues(dbOrderDetail, orderDetail);
-                _orderDetailRepository.Update(dbOrderDetail);
+                if (dbOrderDetail == null)
+                {
+                    _orderDetailRepository.Create(order);
+                }
+                else
+                {
+                    _orderDetailRepository.SetValues(dbOrderDetail, orderDetail);
+                    _orderDetailRepository.Update(dbOrderDetail);
+                }
             }
 
             _unitOfWork.Commit();
@@ -51,9 +54,9 @@ namespace AmazeKart.Admin.Infrastructure.Services
             return _orderDetailRepository.All();
         }
 
-        public OrderDetail GetById(int orderId, int productId)
+        public IQueryable<OrderDetail> GetByOrderId(int orderId)
         {
-            return _orderDetailRepository.FindOne(x => x.OrderId == orderId && x.ProductId == productId);
+            return _orderDetailRepository.Find(x => x.OrderId == orderId);
         }
     }
 }

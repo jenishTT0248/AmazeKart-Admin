@@ -33,12 +33,7 @@ namespace AmazeKart.Admin.Infrastructure.Services
         {
             if (paymentDetail == null) return ResultMessage.RecordNotFound;
 
-            if (_paymentDetailRepository.Any(x => x.Id != paymentDetail.Id && x.OrderId == paymentDetail.OrderId)) {
-                return ResultMessage.RecordExists;
-            }
-
             PaymentDetail dbPaymentDetail = _paymentDetailRepository.FindOne(x => x.Id == paymentDetail.Id);
-           
             if (dbPaymentDetail == null) return ResultMessage.RecordNotFound;
 
             _paymentDetailRepository.SetValues(dbPaymentDetail, paymentDetail);
