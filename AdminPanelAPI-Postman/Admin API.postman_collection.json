@@ -31,7 +31,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Type\": \"Debit Card Payment\"\r\n}",
+							"raw": "{\r\n    \"Amount\": 100,\r\n    \"Status\": \"Successful\",\r\n    \"CreatedDate\": \"2023-05-06 23:21:45.927\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -39,7 +39,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7285/api/PaymentType/SaveData",
+							"raw": "https://localhost:7285/api/PaymentDetail/SaveData",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -47,7 +47,7 @@
 							"port": "7285",
 							"path": [
 								"api",
-								"PaymentType",
+								"PaymentDetail",
 								"SaveData"
 							]
 						}
@@ -76,7 +76,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Id\": 2,\r\n    \"Type\": \"Debit Card Payment\"\r\n}",
+							"raw": "{\r\n    \"Id\": 2,\r\n    \"Amount\": 300,\r\n    \"Status\": \"Successful\",\r\n    \"CreatedDate\": \"2023-05-06 23:21:45.927\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -84,7 +84,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7285/api/PaymentType/SaveData",
+							"raw": "https://localhost:7285/api/PaymentDetail/SaveData",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -92,7 +92,7 @@
 							"port": "7285",
 							"path": [
 								"api",
-								"PaymentType",
+								"PaymentDetail",
 								"SaveData"
 							]
 						}
@@ -129,7 +129,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7285/api/PaymentType/DeleteData?paymentId=1",
+							"raw": "https://localhost:7285/api/PaymentDetail/DeleteData?paymentId=1",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -137,7 +137,7 @@
 							"port": "7285",
 							"path": [
 								"api",
-								"PaymentType",
+								"PaymentDetail",
 								"DeleteData"
 							],
 							"query": [
@@ -171,7 +171,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7285/api/PaymentType/GetAll",
+							"raw": "https://localhost:7285/api/PaymentDetail/GetAll",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -179,7 +179,7 @@
 							"port": "7285",
 							"path": [
 								"api",
-								"PaymentType",
+								"PaymentDetail",
 								"GetAll"
 							]
 						}
@@ -219,7 +219,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7285/api/PaymentType/GetById?paymentId=2",
+							"raw": "https://localhost:7285/api/PaymentDetail/GetById?paymentId=2",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -227,7 +227,7 @@
 							"port": "7285",
 							"path": [
 								"api",
-								"PaymentType",
+								"PaymentDetail",
 								"GetById"
 							],
 							"query": [
@@ -727,7 +727,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{    \r\n    \"SKU\": \"WES303420231126\",\r\n    \"ProductName\": \"WES Casuals Light Teal Printed Slim-Fit Shirt\",\r\n    \"SupplierId\": 2,\r\n    \"CategoryId\": 3,\r\n    \"Size\": \"S\",\r\n    \"Color\": \"Red\",\r\n    \"UnitWeight\": 100,\r\n    \"UnitsInStock\": 100,\r\n    \"DiscountType\": \"Percentage\",\r\n    \"DiscountValue\": 10,\r\n    \"Active\": true\r\n}",
+							"raw": "{    \r\n    \"SKU\": \"WES303420230507\",\r\n    \"ProductName\": \"Nuon Blue Distressed Rodeo Crop Jeans\",\r\n    \"SupplierId\": 2,\r\n    \"CategoryId\": 3,\r\n    \"Size\": \"S\",\r\n    \"Color\": \"Red\",\r\n    \"UnitWeight\": 100,\r\n    \"UnitsInStock\": 100,\r\n    \"DiscountType\": \"Percentage\",\r\n    \"DiscountValue\": 10,\r\n    \"Active\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1589,6 +1589,413 @@
 							"query": [
 								{
 									"key": "cartId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrderDetail",
+			"item": [
+				{
+					"name": "SaveData",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"OrderId\": 1,\r\n        \"ProductId\": 1,\r\n        \"Quantity\": 10,\r\n        \"Price\": 100,\r\n        \"Discount\": 2,\r\n        \"OrderAmount\": 102\r\n    },\r\n    {\r\n        \"OrderId\": 1,\r\n        \"ProductId\": 3,\r\n        \"Quantity\": 20,\r\n        \"Price\": 100,\r\n        \"Discount\": 4,\r\n        \"OrderAmount\": 104\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/OrderDetail/SaveData",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"OrderDetail",
+								"SaveData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Data",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/OrderDetail/DeleteData?orderId=1&productId=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"OrderDetail",
+								"DeleteData"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "1"
+								},
+								{
+									"key": "productId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7285/api/OrderDetail/GetAll",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"OrderDetail",
+								"GetAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7285/api/OrderDetail/GetByOrderId?orderId=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"OrderDetail",
+								"GetByOrderId"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "SaveData",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"OrderNumber\": \"ORD001\",\r\n    \"OrderDate\": \"2023-05-07 19:08:19.313\",\r\n    \"CustomerId\": 2,\r\n    \"GrossAmount\": 100,\r\n    \"GrossDiscountAmount\": 10,\r\n    \"NetAmount\": 110,\r\n    \"OrderStatus\": \"Received\",\r\n    \"ShippingDate\": \"06-05-2023\",\r\n    \"DelieveredDate\": \"10-05-2023\",\r\n    \"PaymentId\": 2,\r\n    \"TransactionReferenceNumber\": \"TRN001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Order/SaveData",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Order",
+								"SaveData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Data",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"Id\": 1,\r\n    \"OrderNumber\": \"ORD001\",\r\n    \"OrderDate\": \"2023-05-01 19:08:19.313\",\r\n    \"CustomerId\": 2,\r\n    \"GrossAmount\": 200,\r\n    \"GrossDiscountAmount\": 10,\r\n    \"NetAmount\": 110,\r\n    \"OrderStatus\": \"Received\",\r\n    \"ShippingDate\": \"06-05-2023\",\r\n    \"DelieveredDate\": \"10-05-2023\",\r\n    \"PaymentId\": 2,\r\n    \"TransactionReferenceNumber\": \"TRN001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Order/SaveData",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Order",
+								"SaveData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Data",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7285/api/Order/DeleteData?orderId=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Order",
+								"DeleteData"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7285/api/Order/GetAll",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Order",
+								"GetAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "B0C9F14B93FB42F09308640D3576FD3E",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7285/api/Order/GetById?orderId=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7285",
+							"path": [
+								"api",
+								"Order",
+								"GetById"
+							],
+							"query": [
+								{
+									"key": "orderId",
 									"value": "1"
 								}
 							]
