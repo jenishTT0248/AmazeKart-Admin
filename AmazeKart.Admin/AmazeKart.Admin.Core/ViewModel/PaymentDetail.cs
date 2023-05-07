@@ -13,6 +13,6 @@ namespace AmazeKart.Admin.Core.ViewModel
         [Required(AllowEmptyStrings = false)]
         public string Status { get; set; }
         
-        public DateTime CreatedDate { get; set; }        
+        public DateTime CreatedDate { get; set; }
     }
 }

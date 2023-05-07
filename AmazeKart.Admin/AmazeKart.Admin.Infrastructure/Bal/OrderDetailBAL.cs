@@ -18,12 +18,12 @@ namespace AmazeKart.Admin.Infrastructure.Bal
             _orderDetailService = orderDetailService;
         }
 
-        public ResultMessage SaveData(ViewModel.OrderDetail entity)
+        public ResultMessage SaveData(List<ViewModel.OrderDetail> entity)
         {
             if (entity == null) return ResultMessage.RecordNotFound;
 
-            ObjectModel.OrderDetail orderDetail = new ObjectModel.OrderDetail();
-            _mapper.Map<ViewModel.OrderDetail, ObjectModel.OrderDetail>(entity, orderDetail);
+            List<ObjectModel.OrderDetail> orderDetail = new List<ObjectModel.OrderDetail>();
+            _mapper.Map<List<ViewModel.OrderDetail>, List<ObjectModel.OrderDetail>>(entity, orderDetail);
             return _orderDetailService.SaveData(orderDetail);
         }
 
@@ -40,10 +40,10 @@ namespace AmazeKart.Admin.Infrastructure.Bal
             return orderDetailList.AsQueryable();
         }
 
-        public ViewModel.OrderDetail GetById(int orderId, int productId)
+        public List<ViewModel.OrderDetail> GetByOrderId(int orderId)
         {
-            ObjectModel.OrderDetail orderDetail = _orderDetailService.GetById(orderId, productId);
-            ViewModel.OrderDetail orderDetailViewModel = _mapper.Map<ObjectModel.OrderDetail, ViewModel.OrderDetail>(orderDetail);
+            var orderDetail = _orderDetailService.GetByOrderId(orderId).ToList();
+            List<ViewModel.OrderDetail> orderDetailViewModel = _mapper.Map<List<ObjectModel.OrderDetail>, List<ViewModel.OrderDetail>>(orderDetail);
             return orderDetailViewModel;
         }        
     }
