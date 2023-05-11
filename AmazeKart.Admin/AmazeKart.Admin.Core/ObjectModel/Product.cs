@@ -25,12 +25,6 @@ namespace AmazeKart.Admin.Core.ObjectModel
         public int CategoryId { get; set; }
 
         [DataMember]
-        public string Size { get; set; }
-
-        [DataMember]
-        public string Color { get; set; }
-
-        [DataMember]
         public decimal UnitWeight { get; set; }
 
         [DataMember]

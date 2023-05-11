@@ -45,6 +45,12 @@ namespace AmazeKart.Admin.API.App_Start
             CreateMap<ObjectModel.Cart, ViewModel.Cart>();
 
             CreateMap<ObjectModel.Cart, ViewModelResponse.CartResponse>();
+
+            CreateMap<ViewModel.Size, ObjectModel.Size>();
+            CreateMap<ObjectModel.Size, ViewModel.Size>();
+
+            CreateMap<ViewModel.Color, ObjectModel.Color>();
+            CreateMap<ObjectModel.Color, ViewModel.Color>();
         }
     }
 }
