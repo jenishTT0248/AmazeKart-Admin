@@ -22,12 +22,6 @@ namespace AmazeKart.Admin.Core.ViewModel
         [Required(AllowEmptyStrings = false)]
         public int CategoryId { get; set; }
         
-        [Required(AllowEmptyStrings = false)]
-        public string Size { get; set; }
-        
-        [Required(AllowEmptyStrings = false)]
-        public string Color { get; set; }
-        
         [Required]
         public decimal UnitWeight { get; set; }
         
