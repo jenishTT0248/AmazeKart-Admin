@@ -7,7 +7,6 @@ namespace AmazeKart.Admin.Core.ViewModel
         public Product()
         {
         }
-
         public int Id { get; set; }
         
         [Required(AllowEmptyStrings = false)]
@@ -34,6 +33,8 @@ namespace AmazeKart.Admin.Core.ViewModel
         [Required]
         public decimal DiscountValue { get; set; }
         
-        public bool Active { get; set; }               
+        public bool Active { get; set; }
+
+        public List<ProductDetail> ProductDetails { get; set; }
     }
 }

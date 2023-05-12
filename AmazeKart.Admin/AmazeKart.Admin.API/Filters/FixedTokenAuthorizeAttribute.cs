@@ -9,7 +9,6 @@ namespace AmazeKart.Admin.API.Filters
         public void OnAuthorization(AuthorizationFilterContext context)
         {
             string authToken = GetAuthToken(context.HttpContext);
-            
 
             if (string.IsNullOrWhiteSpace(authToken))
             {
