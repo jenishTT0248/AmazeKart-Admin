@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "1f77a304-8b03-42ed-b765-62de27b19bb9",
-		"name": "Admin API",
+		"_postman_id": "d16a91ba-2c6f-4e52-b4cc-42fc41177fd6",
+		"name": "User API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "10415168"
 	},
@@ -2035,7 +2035,7 @@
 	"variable": [
 		{
 			"key": "Authorization",
-			"value": "B0C9F14B93FB42F09308640D3576FD3E",
+			"value": "9B5A8E99B824422DACC27B405AD1C09D",
 			"type": "string"
 		}
 	]
