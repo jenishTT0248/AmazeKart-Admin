@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "1f77a304-8b03-42ed-b765-62de27b19bb9",
-		"name": "Admin API",
+		"_postman_id": "d16a91ba-2c6f-4e52-b4cc-42fc41177fd6",
+		"name": "User API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "10415168"
 	},
@@ -730,9 +730,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-
 							"raw": "{    \r\n    \"SKU\": \"WES3034202305010\",\r\n    \"ProductName\": \"WES Casuals Light Blue Slim-Fit Shirt\",\r\n    \"SupplierId\": 2,\r\n    \"CategoryId\": 3,\r\n    \"Size\": \"S\",\r\n    \"Color\": \"Red\",\r\n    \"UnitWeight\": 100,\r\n    \"UnitsInStock\": 100,\r\n    \"DiscountType\": \"Percentage\",\r\n    \"DiscountValue\": 10,\r\n    \"Active\": true,\r\n    \"ProductDetails\": [\r\n        {\r\n            \"ProductId\": 1,\r\n            \"SizeId\": 1,\r\n            \"ColorId\": 1,\r\n            \"Active\": true\r\n        }\r\n    ]\r\n}",
-
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1617,9 +1615,7 @@
 							"apikey": [
 								{
 									"key": "value",
-
 									"value": "{{Authorization}}",
-
 									"type": "string"
 								},
 								{
@@ -1664,9 +1660,7 @@
 							"apikey": [
 								{
 									"key": "value",
-
 									"value": "{{Authorization}}",
-
 									"type": "string"
 								},
 								{
@@ -1721,9 +1715,7 @@
 							"apikey": [
 								{
 									"key": "value",
-
 									"value": "{{Authorization}}",
-
 									"type": "string"
 								},
 								{
@@ -1759,9 +1751,7 @@
 							"apikey": [
 								{
 									"key": "value",
-
 									"value": "{{Authorization}}",
-
 									"type": "string"
 								},
 								{
@@ -1808,9 +1798,7 @@
 							"apikey": [
 								{
 									"key": "value",
-
 									"value": "{{Authorization}}",
-
 									"type": "string"
 								},
 								{
@@ -1855,9 +1843,7 @@
 							"apikey": [
 								{
 									"key": "value",
-
 									"value": "{{Authorization}}",
-
 									"type": "string"
 								},
 								{
@@ -1902,9 +1888,7 @@
 							"apikey": [
 								{
 									"key": "value",
-
 									"value": "{{Authorization}}",
-
 									"type": "string"
 								},
 								{
@@ -2051,7 +2035,7 @@
 	"variable": [
 		{
 			"key": "Authorization",
-			"value": "B0C9F14B93FB42F09308640D3576FD3E",
+			"value": "9B5A8E99B824422DACC27B405AD1C09D",
 			"type": "string"
 		}
 	]
