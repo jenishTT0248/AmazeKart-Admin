@@ -1,4 +1,5 @@
 using AmazeKart.Admin.API.App_Start;
+using AmazeKart.Admin.API.Configure;
 using AmazeKart.Admin.Core.IRepositories;
 using AmazeKart.Admin.Core.ObjectModel;
 using AmazeKart.Admin.Infrastructure.Repositories;
@@ -12,6 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.ConfigureSwagger();
+
 builder.Services.AddControllers().ConfigureApiBehaviorOptions(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
@@ -23,6 +26,7 @@ builder.Services.AddControllers().ConfigureApiBehaviorOptions(options =>
 
 builder.Services.AddSignalR();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
 
 var coreAssembly = Assembly.Load("AmazeKart.Admin.Core");
@@ -47,6 +51,12 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+        options.RoutePrefix = string.Empty;
+    });
     app.UseDeveloperExceptionPage();
 }
 

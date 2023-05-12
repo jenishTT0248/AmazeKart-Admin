@@ -25,6 +25,7 @@ namespace AmazeKart.Admin.Infrastructure.Services
 
             _productRepository.Create(product);
             _unitOfWork.Commit();
+            
             return ResultMessage.Success;
         }
 

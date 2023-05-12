@@ -11,11 +11,13 @@ namespace AmazeKart.Admin.Infrastructure.Bal
     public class ProductBAL : IProductBAL
     {
         private readonly IProductService _productService;
+        private readonly IProductDetailService _productDetailService;
         private readonly IMapper _mapper;
 
-        public ProductBAL(IMapper mapper, IProductService productService)
+        public ProductBAL(IMapper mapper, IProductService productService, IProductDetailService productDetailService)
         {
             _productService = productService;
+            _productDetailService = productDetailService;
             _mapper = mapper;
         }
 
@@ -25,7 +27,17 @@ namespace AmazeKart.Admin.Infrastructure.Bal
 
             ObjectModel.Product product = new ObjectModel.Product();
             _mapper.Map<ViewModel.Product, ObjectModel.Product>(entity, product);
-            return _productService.Create(product);
+            _productService.Create(product);
+
+            foreach (var detail in entity.ProductDetails)
+            {
+                ObjectModel.ProductDetail productDetail = new ObjectModel.ProductDetail();
+                _mapper.Map<ViewModel.ProductDetail, ObjectModel.ProductDetail>(detail, productDetail);
+                productDetail.ProductId = product.Id;
+                _productDetailService.Create(productDetail);
+            }
+
+            return ResultMessage.Success;
         }
 
         public ResultMessage Update(ViewModel.Product entity)
