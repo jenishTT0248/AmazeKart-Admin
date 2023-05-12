@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AmazeKart.Admin.API.Controllers
 {
-    //[FixedTokenAuthorizeAttribute]
+    [FixedTokenAuthorizeAttribute]
     [ApiController]
     public class BaseAPIController : ControllerBase
     {
