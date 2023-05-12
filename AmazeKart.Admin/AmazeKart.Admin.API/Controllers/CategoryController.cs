@@ -43,7 +43,7 @@ namespace AmazeKart.Admin.API.Controllers
             return Ok(new ResponseResult(HttpStatusCode.OK, resultMessage.GetStringValue(), null, MessageType.Success.GetStringValue()));
         }
 
-        [HttpPost, Route("DeleteData")]
+        [HttpGet, Route("DeleteData")]
         public IActionResult DeleteData(int categoryId)
         {
             if(categoryId <= 0)
