@@ -9,8 +9,7 @@ namespace AmazeKart.Admin.Core.ViewModel
         [Required(AllowEmptyStrings = false)]
         public string CategoryName { get; set; }
         
-        [Required(AllowEmptyStrings = false)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
         public bool Active { get; set; }
     }
 }

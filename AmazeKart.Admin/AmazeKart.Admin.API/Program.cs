@@ -50,6 +50,13 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
+app.UseCors(builder =>
+{
+    builder.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+});
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
