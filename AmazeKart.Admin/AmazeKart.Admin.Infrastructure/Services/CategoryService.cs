@@ -24,6 +24,7 @@ namespace AmazeKart.Admin.Infrastructure.Services
 
             if (isCategoryExists) return ResultMessage.RecordExists;
 
+            category.Active = true;
             _categoryRepository.Create(category);
             _unitOfWork.Commit();
             return ResultMessage.Success;
@@ -42,6 +43,7 @@ namespace AmazeKart.Admin.Infrastructure.Services
 
             if (dbCategory == null) return ResultMessage.RecordNotFound;
 
+            category.Active = true;
             _categoryRepository.SetValues(dbCategory, category);
             _categoryRepository.Update(dbCategory);
             _unitOfWork.Commit();
