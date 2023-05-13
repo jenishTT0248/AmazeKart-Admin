@@ -1,4 +1,5 @@
 using AmazeKart.User.OrderService;
+
 using log4net;
 using Microsoft.Extensions.Hosting;
 
@@ -48,3 +49,14 @@ finally
 {
     //Log.CloseAndFlush();
 }
+
+
+IHost host = Host.CreateDefaultBuilder(args)
+    .ConfigureServices(services =>
+    {
+        services.AddHostedService<Worker>();
+    })
+    .Build();
+
+await host.RunAsync();
+
