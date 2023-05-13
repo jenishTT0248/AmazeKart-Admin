@@ -1,4 +1,9 @@
+
+﻿using AmazeKart.User.Core;
+using AmazeKart.User.Core.Enums;
+
 ﻿using AmazeKart.User.Core.Enums;
+
 using AmazeKart.User.Core.IBal;
 using AmazeKart.User.Core.IServices;
 using AutoMapper;
@@ -13,10 +18,20 @@ namespace AmazeKart.User.Infrastructure.Bal
         private readonly IPaymentDetailService _paymentDetailService;
         private readonly IMapper _mapper;
 
+        private readonly IAmazeKartAdminServiceBus _amazeKartAdminServiceBus;
+
+        public PaymentDetailBAL(IMapper mapper, IPaymentDetailService paymentDetailService, IAmazeKartAdminServiceBus amazeKartAdminServiceBus)
+        {
+            _mapper = mapper;
+            _paymentDetailService = paymentDetailService;
+            _amazeKartAdminServiceBus = amazeKartAdminServiceBus;
+
+
         public PaymentDetailBAL(IMapper mapper, IPaymentDetailService paymentDetailService)
         {
             _mapper = mapper;
             _paymentDetailService = paymentDetailService;
+
         }
 
         public ResultMessage Create(ViewModel.PaymentDetail entity)

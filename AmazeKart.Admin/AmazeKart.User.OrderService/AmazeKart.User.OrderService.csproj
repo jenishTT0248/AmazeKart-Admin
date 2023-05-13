@@ -8,6 +8,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
+    <PackageReference Include="log4net" Version="2.0.15" />
+    <PackageReference Include="MassTransit" Version="8.0.1" />
+    <PackageReference Include="MassTransit.Newtonsoft" Version="8.0.1" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AmazeKart.User.Core\AmazeKart.User.Core.csproj" />
+  </ItemGroup>
+
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+  </ItemGroup>
+
 </Project>
