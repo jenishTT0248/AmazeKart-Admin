@@ -16,7 +16,7 @@ namespace AmazeKart.User.OrderService.Consumer
         public OrderConsumer(IOrderService orderService, ILog logger,IMapper mapper)
         {
             _orderService = orderService;
-            _logger = LogManager.GetLogger(typeof(OrderConsumer)); ;
+            _logger = LogManager.GetLogger(typeof(OrderConsumer)); 
             _mapper = mapper;
 
         }
