@@ -21,6 +21,7 @@
         public virtual DbSet<Cart> CartDetails { get; set; }
         public virtual DbSet<Size> Sizes { get; set; }
         public virtual DbSet<Color> Colors { get; set; }
+        public virtual DbSet<AdminUser> AdminUsers { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
