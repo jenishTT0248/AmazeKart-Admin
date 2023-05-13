@@ -1,8 +1,12 @@
 using AmazeKart.User.API.App_Start;
 using AmazeKart.User.API.Configure;
+using AmazeKart.User.Core;
 using AmazeKart.User.Core.IRepositories;
 using AmazeKart.User.Core.ObjectModel;
 using AmazeKart.User.Infrastructure.Repositories;
+using AmazeKart.User.Infrastructure.Utilities;
+using MassTransit;
+using MassTransit.MultiBus;
 using Microsoft.EntityFrameworkCore;
 using NetCore.AutoRegisterDi;
 using Newtonsoft.Json.Serialization;
@@ -77,4 +81,25 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllers();
 });
 
+var rabbitMqConfig = builder.Configuration?.GetSection("RabbitMq");
+
+var userName = rabbitMqConfig.GetValue<string>("RabbitMqUserName");
+var password = rabbitMqConfig.GetValue<string>("RabbitMqUserName");
+
+var vhost = builder.Configuration?.GetSection("PricingRabbitMQHost").Value;
+
+builder.Services.AddMassTransit<IAmazeKartAdminServiceBus>(x =>
+{
+    x.AddBus(context => Bus.Factory.CreateUsingRabbitMq(cfg =>
+    {
+        cfg.Host(new Uri(vhost), h =>
+        {
+            h.Username(userName);
+            h.Password(password);
+        });
+        cfg.ConfigureEndpoints(context);
+    }));
+});
+
+builder.Services.AddMassTransitHostedService();
 app.Run();

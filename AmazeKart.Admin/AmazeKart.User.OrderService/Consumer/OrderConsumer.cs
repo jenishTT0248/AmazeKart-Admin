@@ -1,7 +1,9 @@
-﻿using AmazeKart.Admin.Core.IServices;
+﻿using AmazeKart.User.Core.IServices;
+using AmazeKart.User.Core.ObjectModel;
 using AmazeKart.User.OrderService.DataContract;
 using AutoMapper;
 using log4net;
+//using log4net;
 using MassTransit;
 
 namespace AmazeKart.User.OrderService.Consumer
@@ -18,17 +20,15 @@ namespace AmazeKart.User.OrderService.Consumer
             _orderService = orderService;
             _logger = LogManager.GetLogger(typeof(OrderConsumer)); 
             _mapper = mapper;
-
         }
-
 
         public async Task Consume(ConsumeContext<Orders> context)
         {
-            _logger.Info("Payment Service Started");
-            var orders = _mapper.Map<Orders, Admin.Core.ObjectModel.Order>(context.Message);
+           _logger.Info("Order Service Started");
+            var orders = _mapper.Map<Orders, Order>(context.Message);
            
             _orderService.Create(orders);
-            _logger.Info("Payment Service End");
+           _logger.Info("Order Service End");
         }
     }
 }
