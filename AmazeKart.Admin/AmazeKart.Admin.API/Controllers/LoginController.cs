@@ -14,7 +14,6 @@ namespace AmazeKart.Admin.API.Controllers
         private readonly IAdminUserService _adminUserService;
         private readonly IConfiguration _configuration;
 
-
         public LoginController(IAdminUserService adminUserService, IConfiguration configuration)
         {
             _adminUserService = adminUserService;
