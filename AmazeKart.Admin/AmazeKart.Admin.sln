@@ -9,17 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazeKart.Admin.Core", "Ama
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazeKart.Admin.Infrastructure", "AmazeKart.Admin.Infrastructure\AmazeKart.Admin.Infrastructure.csproj", "{FD01EA78-72DC-47F9-B267-65C541F79EE7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazeKart.User.Infrastructure", "AmazeKart.User.Infrastructure\AmazeKart.User.Infrastructure.csproj", "{7DE6CE17-755F-4657-94C5-0AB6F70E96EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazeKart.User", "AmazeKart.User\AmazeKart.User.csproj", "{268F86DD-668A-451C-AF8E-7E578AE72208}"
 EndProject
-<<<<<<< Updated upstream
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazeKart.User.Core", "AmazeKart.User.Core\AmazeKart.User.Core.csproj", "{470DA77F-0D07-4004-AF62-8B34DE94A685}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazeKart.User.OrderService", "AmazeKart.User.OrderService\AmazeKart.User.OrderService.csproj", "{1611C41F-1C99-4336-B207-B323D505E2FF}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazeKart.User.PaymentService", "AmazeKart.User.PaymentService\AmazeKart.User.PaymentService.csproj", "{D72D7751-C482-4E67-A3FB-1F3B50751399}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazeKart.User.API", "AmazeKart.User.API\AmazeKart.User.API.csproj", "{24945B24-758C-4D9F-8708-82AD371DB97F}"
-=======
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazeKart.User.Infrastructure", "AmazeKart.User.Infrastructure\AmazeKart.User.Infrastructure.csproj", "{7DE6CE17-755F-4657-94C5-0AB6F70E96EF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazeKart.User.Core", "AmazeKart.User.Core\AmazeKart.User.Core.csproj", "{470DA77F-0D07-4004-AF62-8B34DE94A685}"
@@ -47,7 +38,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AmazeKart.User.UI", "AmazeK
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "52372"
 	EndProjectSection
->>>>>>> Stashed changes
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +57,10 @@ Global
 		{FD01EA78-72DC-47F9-B267-65C541F79EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD01EA78-72DC-47F9-B267-65C541F79EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD01EA78-72DC-47F9-B267-65C541F79EE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{268F86DD-668A-451C-AF8E-7E578AE72208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{268F86DD-668A-451C-AF8E-7E578AE72208}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{268F86DD-668A-451C-AF8E-7E578AE72208}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{268F86DD-668A-451C-AF8E-7E578AE72208}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7DE6CE17-755F-4657-94C5-0AB6F70E96EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7DE6CE17-755F-4657-94C5-0AB6F70E96EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DE6CE17-755F-4657-94C5-0AB6F70E96EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -83,17 +77,10 @@ Global
 		{D72D7751-C482-4E67-A3FB-1F3B50751399}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D72D7751-C482-4E67-A3FB-1F3B50751399}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D72D7751-C482-4E67-A3FB-1F3B50751399}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< Updated upstream
-		{24945B24-758C-4D9F-8708-82AD371DB97F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24945B24-758C-4D9F-8708-82AD371DB97F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24945B24-758C-4D9F-8708-82AD371DB97F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24945B24-758C-4D9F-8708-82AD371DB97F}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
 		{38DBFE98-BBA7-4A5F-8600-65FECE66631F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{38DBFE98-BBA7-4A5F-8600-65FECE66631F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38DBFE98-BBA7-4A5F-8600-65FECE66631F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{38DBFE98-BBA7-4A5F-8600-65FECE66631F}.Release|Any CPU.Build.0 = Debug|Any CPU
->>>>>>> Stashed changes
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
